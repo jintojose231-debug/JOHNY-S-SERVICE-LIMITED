@@ -22,7 +22,13 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 25%, #a5d6a7 50%, #81c784 75%, #66bb6a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
         
         .container {
@@ -32,58 +38,156 @@
             padding: 0 20px;
         }
         
-        /* Header and Hero Section */
-        .hero {
-            height: 100vh;
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 80vh;
             position: relative;
+            padding: 20px;
+        }
+        
+        /* Ribbons */
+        .ribbons-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
             overflow: hidden;
         }
         
-        .hero-slideshow {
+        .ribbon {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .slide.active {
-            opacity: 1;
-        }
-        
-        .slide-overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px;
+            height: 15px;
+            width: 120px;
             border-radius: 10px;
+            opacity: 0.7;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        /* Ribbons moving left to right */
+        .ribbon-ltr-1 {
+            background: linear-gradient(to right, #1b5e20, #4caf50);
+            top: 20%;
+            animation-name: waveMotionLTR1;
+        }
+        
+        .ribbon-ltr-2 {
+            background: linear-gradient(to right, #2e7d32, #66bb6a);
+            top: 50%;
+            animation-name: waveMotionLTR2;
+            animation-delay: 5s;
+        }
+        
+        .ribbon-ltr-3 {
+            background: linear-gradient(to right, #388e3c, #81c784);
+            top: 80%;
+            animation-name: waveMotionLTR3;
+            animation-delay: 10s;
+        }
+        
+        /* Ribbons moving right to left */
+        .ribbon-rtl-1 {
+            background: linear-gradient(to left, #1b5e20, #4caf50);
+            top: 35%;
+            animation-name: waveMotionRTL1;
+            animation-delay: 3s;
+        }
+        
+        .ribbon-rtl-2 {
+            background: linear-gradient(to left, #2e7d32, #66bb6a);
+            top: 65%;
+            animation-name: waveMotionRTL2;
+            animation-delay: 8s;
+        }
+        
+        .ribbon-rtl-3 {
+            background: linear-gradient(to left, #388e3c, #81c784);
+            top: 10%;
+            animation-name: waveMotionRTL3;
+            animation-delay: 13s;
+        }
+        
+        /* Circular Images Container */
+        .image-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            margin: 40px 0;
+            height: 250px;
+            width: 100%;
+        }
+        
+        .image-container {
+            width: 200px;
+            height: 200px;
+            animation: pulseSize 6s ease-in-out infinite;
+            border-radius: 50%;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 6px solid #2c3e50;
+            transition: all 0.5s ease;
+            position: relative;
+            margin: 0 -15px; /* Negative margin to make them touch */
+        }
+        
+        /* Position images so they touch but don't overlap */
+        .image-container:nth-child(1) {
+            z-index: 3;
+            animation-delay: 0s;
+            border-color: #1b5e20;
+        }
+        
+        .image-container:nth-child(2) {
+            z-index: 4;
+            width: 230px;
+            height: 230px;
+            animation-delay: 1s;
+            border-color: #2e7d32;
+        }
+        
+        .image-container:nth-child(3) {
+            z-index: 3;
+            animation-delay: 2s;
+            border-color: #388e3c;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container:hover {
+            transform: scale(1.05) translateY(-10px);
+            z-index: 5;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+        
+        .image-title {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
             text-align: center;
-            max-width: 800px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        
-        .slide-1 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/carpetcleaning.jpg');
-        }
-        
-        .slide-2 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/comercialclean.jpg');
-        }
-        
-        .slide-3 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/mold.jpg');
+            font-weight: bold;
+            color: #1b5e20;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
         }
         
         .hero-content {
@@ -93,44 +197,44 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            color: white;
+            color: #1b5e20;
             text-align: center;
             padding: 0 20px;
+            margin-top: 50px;
         }
         
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             animation: slideDown 1s ease-out;
+            color: #1b5e20;
         }
         
         .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 30px;
             max-width: 800px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
             animation: slideUp 1s ease-out;
+            color: #2e7d32;
         }
         
-        /* Navigation Buttons */
+        /* Navigation Buttons - Always visible */
         .nav-buttons {
-            position: absolute;
-            bottom: 50px;
-            left: 0;
-            right: 0;
+            position: relative;
             z-index: 3;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            padding: 0 20px;
+            padding: 20px;
+            margin-top: 30px;
         }
         
         .nav-btn {
             padding: 15px 30px;
-            background-color: #2c3e50;
+            background-color: #2e7d32;
             color: white;
             border: none;
             border-radius: 50px;
@@ -142,151 +246,9 @@
         }
         
         .nav-btn:hover {
-            background-color: #3498db;
+            background-color: #1b5e20;
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #2c3e50;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #3498db;
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            color: #3498db;
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            position: relative;
-        }
-        
-        .testimonial-card:before {
-            content: ''';
-            font-family: Arial;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 5rem;
-            color: #3498db;
-            opacity: 0.2;
-            line-height: 1;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        
-        .footer-contact {
-            margin-bottom: 20px;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: #3498db;
         }
         
         /* WhatsApp Button */
@@ -316,9 +278,138 @@
         }
         
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Left to right animations */
+        @keyframes waveMotionLTR1 {
+            0% {
+                left: -150px;
+                top: 20%;
+            }
+            25% {
+                top: 25%;
+            }
+            50% {
+                top: 20%;
+            }
+            75% {
+                top: 15%;
+            }
+            100% {
+                left: 100%;
+                top: 20%;
+            }
+        }
+        
+        @keyframes waveMotionLTR2 {
+            0% {
+                left: -150px;
+                top: 50%;
+            }
+            25% {
+                top: 55%;
+            }
+            50% {
+                top: 50%;
+            }
+            75% {
+                top: 45%;
+            }
+            100% {
+                left: 100%;
+                top: 50%;
+            }
+        }
+        
+        @keyframes waveMotionLTR3 {
+            0% {
+                left: -150px;
+                top: 80%;
+            }
+            25% {
+                top: 85%;
+            }
+            50% {
+                top: 80%;
+            }
+            75% {
+                top: 75%;
+            }
+            100% {
+                left: 100%;
+                top: 80%;
+            }
+        }
+        
+        /* Right to left animations */
+        @keyframes waveMotionRTL1 {
+            0% {
+                right: -150px;
+                top: 35%;
+            }
+            25% {
+                top: 40%;
+            }
+            50% {
+                top: 35%;
+            }
+            75% {
+                top: 30%;
+            }
+            100% {
+                right: 100%;
+                top: 35%;
+            }
+        }
+        
+        @keyframes waveMotionRTL2 {
+            0% {
+                right: -150px;
+                top: 65%;
+            }
+            25% {
+                top: 70%;
+            }
+            50% {
+                top: 65%;
+            }
+            75% {
+                top: 60%;
+            }
+            100% {
+                right: 100%;
+                top: 65%;
+            }
+        }
+        
+        @keyframes waveMotionRTL3 {
+            0% {
+                right: -150px;
+                top: 10%;
+            }
+            25% {
+                top: 15%;
+            }
+            50% {
+                top: 10%;
+            }
+            75% {
+                top: 5%;
+            }
+            100% {
+                right: 100%;
+                top: 10%;
+            }
+        }
+        
+        @keyframes pulseSize {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         
         @keyframes slideDown {
@@ -338,7 +429,50 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 900px) {
+            .image-showcase {
+                height: 220px;
+            }
+            
+            .image-container {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .image-container:nth-child(2) {
+                width: 190px;
+                height: 190px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .nav-buttons {
+                margin-top: 20px;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .image-showcase {
+                height: 180px;
+            }
+            
+            .image-container {
+                width: 140px;
+                height: 140px;
+                margin: 0 -10px;
+            }
+            
+            .image-container:nth-child(2) {
+                width: 160px;
+                height: 160px;
+            }
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -347,17 +481,9 @@
                 font-size: 1.2rem;
             }
             
-            .nav-buttons {
-                bottom: 30px;
-            }
-            
             .nav-btn {
                 padding: 12px 25px;
                 font-size: 0.9rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
             }
             
             .whatsapp-float {
@@ -370,8 +496,27 @@
         }
         
         @media (max-width: 576px) {
+            .image-showcase {
+                height: 150px;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            
+            .image-container {
+                width: 120px;
+                height: 120px;
+                margin: 5px;
+            }
+            
+            .image-container:nth-child(2) {
+                width: 140px;
+                height: 140px;
+            }
+            
             .hero-content h1 {
                 font-size: 2rem;
+                margin-top: 20px;
             }
             
             .hero-content p {
@@ -381,6 +526,7 @@
             .nav-buttons {
                 flex-direction: column;
                 align-items: center;
+                margin-top: 10px;
             }
             
             .nav-btn {
@@ -390,26 +536,36 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section with Slideshow -->
-    <header class="hero">
-        <div class="hero-slideshow">
-            <div class="slide slide-1 active">
-                <div class="slide-overlay">
-                    <h2>Professional Carpet Cleaning</h2>
-                    <p>Revitalize your workspace with our expert carpet cleaning services</p>
-                </div>
+    <!-- Ribbons Container -->
+    <div class="ribbons-container">
+        <!-- Ribbons moving left to right -->
+        <div class="ribbon ribbon-ltr-1"></div>
+        <div class="ribbon ribbon-ltr-2"></div>
+        <div class="ribbon ribbon-ltr-3"></div>
+        
+        <!-- Ribbons moving right to left -->
+        <div class="ribbon ribbon-rtl-1"></div>
+        <div class="ribbon ribbon-rtl-2"></div>
+        <div class="ribbon ribbon-rtl-3"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Circular Images -->
+        <div class="image-showcase">
+            <div class="image-container">
+                <img src="images/carpetcleaning.jpg" alt="Carpet Cleaning">
+                <div class="image-title">Carpet Cleaning</div>
             </div>
-            <div class="slide slide-2">
-                <div class="slide-overlay">
-                    <h2>Commercial Cleaning Experts</h2>
-                    <p>Keeping Wellington businesses sparkling clean since 2010</p>
-                </div>
+            
+            <div class="image-container">
+                <img src="images/comercialclean.jpg" alt="Commercial Cleaning">
+                <div class="image-title">Commercial Cleaning</div>
             </div>
-            <div class="slide slide-3">
-                <div class="slide-overlay">
-                    <h2>Mold Remediation</h2>
-                    <p>Professional mold removal for a healthier work environment</p>
-                </div>
+            
+            <div class="image-container">
+                <img src="images/mold.jpg" alt="Mold Removal">
+                <div class="image-title">Mold Removal</div>
             </div>
         </div>
         
@@ -424,82 +580,7 @@
             <button class="nav-btn" onclick="location.href='services.html'">AVAILABLE SERVICES</button>
             <button class="nav-btn" onclick="location.href='enquiry.html'">ENQUIRY</button>
         </div>
-    </header>
-    
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Flexible Scheduling</h3>
-                    <p>We work around your business hours to minimize disruption to your operations.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Eco-Friendly Products</h3>
-                    <p>We use environmentally friendly cleaning products that are safe for your staff and customers.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Certified Professionals</h3>
-                    <p>Our team is fully trained, certified, and experienced in commercial cleaning.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">Johnny's Service has been cleaning our office for over 3 years. Their attention to detail and reliability is unmatched in Wellington.</p>
-                    <p class="testimonial-author">- Sarah Johnson, Office Manager</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">We switched to Johnny's Service last year and couldn't be happier. Our workspace has never been cleaner, and their staff is always professional.</p>
-                    <p class="testimonial-author">- Michael Chen, Business Owner</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">The mold remediation work they did for us was exceptional. They were thorough, professional, and delivered ahead of schedule.</p>
-                    <p class="testimonial-author">- Lisa Thompson, Property Manager</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">JOHNY'S SERVICE LIMITED</div>
-                <div class="footer-contact">
-                    <p>Email: info@johnnysservice.co.nz</p>
-                    <p>Phone: +64 22 464 7210</p>
-                    <p>Wellington, New Zealand</p>
-                </div>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
     
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/64224647210?text=Tell%20us%20how%20can%20we%20help%20you" class="whatsapp-float" target="_blank">
@@ -507,27 +588,27 @@
     </a>
     
     <script>
-        // Slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
+        // Additional animation for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.image-container');
             
-            currentSlide = (n + slides.length) % slides.length;
+            function animateImages() {
+                images.forEach((image, index) => {
+                    setTimeout(() => {
+                        image.style.transform = 'scale(1.05) translateY(-10px)';
+                        setTimeout(() => {
+                            image.style.transform = 'scale(1)';
+                        }, 1000);
+                    }, index * 1000);
+                });
+            }
             
-            slides[currentSlide].classList.add('active');
-        }
-        
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-        
-        // Change slide every 5 seconds
-        setInterval(nextSlide, 5000);
-        
-        // Initialize the slideshow
-        showSlide(0);
+            // Animate images every 8 seconds
+            setInterval(animateImages, 8000);
+            
+            // Start initial animation
+            setTimeout(animateImages, 1000);
+        });
     </script>
 </body>
 </html>
