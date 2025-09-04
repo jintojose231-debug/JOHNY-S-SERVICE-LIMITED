@@ -311,9 +311,10 @@
             color: white;
         }
         
+        /* Yellow placeholder text */
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: #ffd700; /* Yellow placeholder text */
+            color: #ffd700;
             opacity: 0.8;
         }
         
@@ -355,6 +356,8 @@
             border-radius: 0 0 8px 8px;
             overflow: hidden;
             backdrop-filter: blur(10px);
+            max-height: 200px;
+            overflow-y: auto;
         }
         
         .autocomplete-items div {
@@ -496,7 +499,7 @@
             transition: all 0.3s ease;
             z-index: 100;
             opacity: 0;
-            visibility: hidden;
+            visibility: visible;
         }
         
         .scroll-to-top.visible {
@@ -568,6 +571,7 @@
         .dialog-form-group label {
             font-weight: 600;
             color: #444;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .dialog-form-group select {
@@ -823,7 +827,7 @@
     <div class="color-strip strip-ltr-2"></div>
     <div class="color-strip strip-ltr-3"></div>
     <div class="color-strip strip-rtl-1"></div>
-    <div class="color-strip strip-rtl-2"></div>
+    <div class="color极 strip-rtl-2"></div>
     <div class="color-strip strip-rtl-3"></div>
     
     <!-- Main Content -->
@@ -890,33 +894,29 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required autocomplete="name">
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="contact">Contact Number</label>
-                            <input type="tel" id="contact" name="contact" required autocomplete="tel">
+                            <input type="tel" id="contact" name="contact" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required autocomplete="email">
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="service">Service Needed</label>
                             <select id="service" name="service" required>
                                 <option value="">Select a service</option>
-                                <option value="Carpet Cleaning">Carpet Cleaning Services</option>
-                                <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Deep Cleaning</option>
-                                <option value="Commercial Cleaning">Commercial Deep Cleaning</option>
-                                <option value="Airbnb Cleaning">Airbnb Cleaning Services</option>
-                                <option value="Mold Removal">Mold Removal & Cleaning</option>
-                                <option value="Office Cleaning">Regular Office Cleaning</option>
-                                <option value="Window Cleaning">Window Cleaning</option>
-                                <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
-                                <option value="Emergency Cleaning">Emergency Cleaning Services</option>
-                                <option value="Other">Other Cleaning Service</option>
+                                <option value="Carpet Cleaning Services">Carpet Cleaning Services</option>
+                                <option value="Move-In & Move-Out Deep Cleaning Services">Move-In & Move-Out Deep Cleaning Services</option>
+                                <option value="Commercial Deep Cleaning Services">Commercial Deep Cleaning Services</option>
+                                <option value="Airbnb Cleaning Services">Airbnb Cleaning Services</option>
+                                <option value="Mold Removal & Cleaning Services">Mold Removal & Cleaning Services</option>
+                                <option value="Other Cleaning Service">Other Cleaning Service</option>
                             </select>
                         </div>
                     </div>
@@ -925,7 +925,7 @@
                         <div class="form-group">
                             <label for="address">Site Address</label>
                             <div class="autocomplete-container">
-                                <input type="text" id="address" name="address" required autocomplete="street-address" placeholder="Start typing your address...">
+                                <input type="text" id="address" name="address" required placeholder="Start typing your address...">
                             </div>
                         </div>
                     </div>
@@ -997,16 +997,12 @@
                 <label for="serviceSelect">Which service are you interested in?</label>
                 <select id="serviceSelect">
                     <option value="">Please select a service</option>
-                    <option value="Carpet Cleaning">Carpet Cleaning Services</option>
-                    <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Deep Cleaning</option>
-                    <option value="Commercial Cleaning">Commercial Deep Cleaning</option>
-                    <option value="Airbnb Cleaning">Airbnb Cleaning Services</option>
-                    <option value="Mold Removal">Mold Removal & Cleaning</option>
-                    <option value="Office Cleaning">Regular Office Cleaning</option>
-                    <option value="Window Cleaning">Window Cleaning</option>
-                    <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
-                    <option value="Emergency Cleaning">Emergency Cleaning Services</option>
-                    <option value="Other">Other Cleaning Service</option>
+                    <option value="Carpet Cleaning Services">Carpet Cleaning Services</option>
+                    <option value="Move-In & Move-Out Deep Cleaning Services">Move-In & Move-Out Deep Cleaning Services</option>
+                    <option value="Commercial Deep Cleaning Services">Commercial Deep Cleaning Services</option>
+                    <option value="Airbnb Cleaning Services">Airbnb Cleaning Services</option>
+                    <option value="Mold Removal & Cleaning Services">Mold Removal & Cleaning Services</option>
+                    <option value="Other Cleaning Service">Other Cleaning Service</option>
                 </select>
             </div>
             <button class="dialog-send-btn" id="sendWhatsApp">Send via WhatsApp</button>
@@ -1031,7 +1027,7 @@
             // Animate service boxes with delays
             const serviceBoxes = document.querySelectorAll('.service-box');
             
-            serviceBoxes.forEach(box => {
+            service极es.forEach(box => {
                 const delay = parseInt(box.getAttribute('data-delay'));
                 setTimeout(() => {
                     box.classList.add('visible');
@@ -1108,7 +1104,7 @@
             };
             
             // Scroll to top button
-            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const scrollTo极Btn = document.getElementById('scrollToTop');
             
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
@@ -1131,7 +1127,7 @@
                 // Get form data
                 const formData = {
                     name: document.getElementById('name').value,
-                    contact: document.getElementById('contact').value,
+                    contact: document.getElementById极('contact').value,
                     email: document.getElementById('email').value,
                     service: document.getElementById('service').value,
                     address: document.getElementById('address').value,
@@ -1181,7 +1177,12 @@
                         '50 Courtenay Place, Te Aro, Wellington 6011',
                         '65 The Terrace, Wellington Central, Wellington 6011',
                         '78 Willis Street, Wellington Central, Wellington 6011',
-                        '85 Lambton Quay, Wellington Central, Wellington 6011'
+                        '85 Lambton Quay, Wellington Central, Wellington 6011',
+                        '100 Customhouse Quay, Wellington Central, Wellington 6011',
+                        '120 Featherston Street, Wellington Central, Wellington 6011',
+                        '150 Willis Street, Wellington Central, Wellington 6011',
+                        '200 Taranaki Street, Te Aro, Wellington 6011',
+                        '250 Cuba Street, Te Aro, Wellington 6011'
                     ];
                     
                     // Filter addresses based on input
@@ -1190,19 +1191,34 @@
                     );
                     
                     // Display the filtered addresses
-                    filteredAddresses.forEach(address => {
+                    if (filteredAddresses.length === 0) {
                         const item = document.createElement('div');
-                        item.innerHTML = '<strong>' + address.substr(0, val.length) + '</strong>';
-                        item.innerHTML += address.substr(val.length);
-                        item.innerHTML += '<input type="hidden" value="' + address + '">';
-                        
-                        item.addEventListener('click', function() {
-                            addressInput.value = this.getElementsByTagName('input')[0].value;
-                            closeAllLists();
-                        });
-                        
+                        item.innerHTML = 'No addresses found';
+                        item.style.cursor = 'default';
+                        item.style.color = '#999';
                         autocompleteItems.appendChild(item);
-                    });
+                    } else {
+                        filteredAddresses.forEach(address => {
+                            const item = document.createElement('div');
+                            // Highlight the matching part of the address
+                            const matchStart = address.toLowerCase().indexOf(val.toLowerCase());
+                            if (matchStart !== -1) {
+                                item.innerHTML = address.substr(0, matchStart) + 
+                                                '<strong>' + address.substr(matchStart, val.length) + '</strong>' + 
+                                                address.substr(matchStart + val.length);
+                            } else {
+                                item.innerHTML = address;
+                            }
+                            item.innerHTML += '<input type="hidden" value="' + address + '">';
+                            
+                            item.addEventListener('click', function() {
+                                addressInput.value = this.getElementsByTagName('input')[0].value;
+                                closeAllLists();
+                            });
+                            
+                            autocompleteItems.appendChild(item);
+                        });
+                    }
                 });
                 
                 addressInput.addEventListener('keydown', function(e) {
@@ -1217,8 +1233,8 @@
                         addActive(autocompleteItems);
                     } else if (e.keyCode == 13) { // Enter
                         e.preventDefault();
-                        if (currentFocus > -1) {
-                            if (autocompleteItems) autocompleteItems[currentFocus].click();
+                        if (currentFocus > -1 && autocompleteItems) {
+                            autocompleteItems[currentFocus].click();
                         }
                     }
                 });
@@ -1242,7 +1258,7 @@
                 function closeAllLists(elmnt) {
                     const autocompleteItems = document.getElementsByClassName('autocomplete-items');
                     for (let i = 0; i < autocompleteItems.length; i++) {
-                        if (elmnt != autocompleteItems[i] && elmnt != addressInput) {
+                        if (elmnt != autocompleteItems极] && elmnt != addressInput) {
                             autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
                         }
                     }
