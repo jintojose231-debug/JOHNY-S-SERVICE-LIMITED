@@ -238,11 +238,113 @@
             align-items: center;
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
+            cursor: pointer;
         }
         
         .whatsapp-float:hover {
             background-color: #128C7E;
             transform: scale(1.1);
+        }
+        
+        /* WhatsApp Dialog */
+        .whatsapp-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            padding: 25px;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+        
+        .dialog-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .dialog-header h3 {
+            color: #25d366;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .dialog-header p {
+            color: #555;
+        }
+        
+        .dialog-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-group select {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .send-btn {
+            padding: 12px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .send-btn:hover {
+            background: #128C7E;
+        }
+        
+        .close-dialog {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-dialog:hover {
+            color: #333;
         }
         
         /* Color Strips */
@@ -384,6 +486,11 @@
                 height: 55px;
                 font-size: 25px;
             }
+            
+            .whatsapp-dialog {
+                width: 95%;
+                padding: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -489,9 +596,9 @@
     
     <!-- Content -->
     <div class="content">
-        <!-- Logo -->
+        <!-- Logo - Updated to use images/logo.png -->
         <div class="logo-container">
-            <img src="https://placehold.co/200x80/1b5e20/white?text=JOHNY'S+LOGO" alt="JOHNY'S SERVICE LIMITED" class="logo">
+            <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED" class="logo">
         </div>
         
         <div class="logo-section">
@@ -545,9 +652,33 @@
     </div>
     
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/64224647210?text=Tell%20us%20how%20can%20we%20help%20you" class="whatsapp-float" target="_blank">
+    <div class="whatsapp-float" id="whatsappBtn">
         <i class="fab fa-whatsapp"></i>
-    </a>
+    </div>
+    
+    <!-- WhatsApp Dialog -->
+    <div class="dialog-overlay" id="dialogOverlay"></div>
+    <div class="whatsapp-dialog" id="whatsappDialog">
+        <button class="close-dialog" id="closeDialog">&times;</button>
+        <div class="dialog-header">
+            <h3>Contact Us</h3>
+            <p>Thank you for choosing our services!</p>
+        </div>
+        <div class="dialog-form">
+            <div class="form-group">
+                <label for="serviceSelect">Which service are you interested in?</label>
+                <select id="serviceSelect">
+                    <option value="">Please select a service</option>
+                    <option value="Carpet Cleaning">Carpet Cleaning Services</option>
+                    <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Deep Cleaning</option>
+                    <option value="Commercial Cleaning">Commercial Deep Cleaning</option>
+                    <option value="Airbnb Cleaning">Airbnb Cleaning Services</option>
+                    <option value="Mold Removal">Mold Removal & Cleaning</option>
+                </select>
+            </div>
+            <button class="send-btn" id="sendWhatsApp">Send via WhatsApp</button>
+        </div>
+    </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -585,6 +716,54 @@
                     }, index * 300);
                 });
             }, 8000);
+            
+            // WhatsApp Dialog functionality
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const whatsappDialog = document.getElementById('whatsappDialog');
+            const dialogOverlay = document.getElementById('dialogOverlay');
+            const closeDialog = document.getElementById('closeDialog');
+            const sendWhatsApp = document.getElementById('sendWhatsApp');
+            const serviceSelect = document.getElementById('serviceSelect');
+            
+            // Open dialog
+            whatsappBtn.addEventListener('click', function() {
+                whatsappDialog.style.display = 'block';
+                dialogOverlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close dialog
+            function closeWhatsAppDialog() {
+                whatsappDialog.style.display = 'none';
+                dialogOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            closeDialog.addEventListener('click', closeWhatsAppDialog);
+            dialogOverlay.addEventListener('click', closeWhatsAppDialog);
+            
+            // Send message via WhatsApp
+            sendWhatsApp.addEventListener('click', function() {
+                const selectedService = serviceSelect.value;
+                if (!selectedService) {
+                    alert('Please select a service');
+                    return;
+                }
+                
+                const message = `Hello! Thank you for your interest in our ${selectedService}. How can we assist you today?`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/64224647210?text=${encodedMessage}`;
+                
+                window.open(whatsappURL, '_blank');
+                closeWhatsAppDialog();
+            });
+            
+            // Close dialog with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && whatsappDialog.style.display === 'block') {
+                    closeWhatsAppDialog();
+                }
+            });
         });
     </script>
 </body>
