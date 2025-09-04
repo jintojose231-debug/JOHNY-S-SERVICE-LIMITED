@@ -513,27 +513,47 @@
         }
         
         @media (max-width: 576px) {
+            body {
+                padding: 10px;
+                justify-content: flex-start;
+                min-height: auto;
+            }
+            
+            .main-content {
+                min-height: auto;
+                padding: 10px;
+            }
+            
             .image-showcase {
                 height: auto;
-                flex-direction: column;
-                justify-content: center;
-                margin-top: 20px;
-                gap: 20px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin: 20px 0;
+                width: 100%;
             }
             
             .image-container {
-                width: 80vw;
-                height: 80vw;
-                max-width: 300px;
-                max-height: 300px;
+                width: 28%;
+                height: auto;
+                aspect-ratio: 1/1;
                 margin: 0;
+                max-width: 100px;
+                border-width: 4px;
+            }
+            
+            .image-container:nth-child(1) {
+                order: 3; /* Right side */
             }
             
             .image-container:nth-child(2) {
-                width: 80vw;
-                height: 80vw;
-                max-width: 300px;
-                max-height: 300px;
+                order: 2; /* Middle */
+                width: 32%;
+                max-width: 110px;
+            }
+            
+            .image-container:nth-child(3) {
+                order: 1; /* Left side */
             }
             
             /* Remove image labels on mobile */
@@ -541,13 +561,18 @@
                 display: none;
             }
             
-            .hero-content h1 {
-                font-size: 2rem;
+            .hero-content {
                 margin-top: 20px;
             }
             
+            .hero-content h1 {
+                font-size: 1.5rem;
+                margin-top: 10px;
+            }
+            
             .hero-content p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                margin-bottom: 20px;
             }
             
             .nav-buttons {
@@ -557,14 +582,18 @@
                 margin-top: 20px;
                 width: 100%;
                 max-width: 400px;
+                padding: 10px;
+                gap: 10px;
             }
             
             .nav-btn {
                 width: 48%;
+                padding: 10px 15px;
+                font-size: 0.8rem;
                 margin-bottom: 10px;
             }
             
-            /* Arrange two buttons left and two buttons right */
+            /* Arrange first two buttons on left, last two on right */
             .nav-btn:nth-child(1),
             .nav-btn:nth-child(2) {
                 align-self: flex-start;
@@ -573,6 +602,18 @@
             .nav-btn:nth-child(3),
             .nav-btn:nth-child(4) {
                 align-self: flex-end;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+            
+            .ribbons-container {
+                display: none;
             }
         }
     </style>
