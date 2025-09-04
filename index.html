@@ -17,16 +17,7 @@
         body {
             overflow-x: hidden;
             min-height: 100vh;
-            background: #1b5e20;
             color: white;
-        }
-        
-        /* Mobile Layout */
-        .mobile-container {
-            width: 100vw;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
         }
         
         /* Slideshow Background */
@@ -46,7 +37,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.5s ease-in-out;
             background-size: cover;
             background-position: center;
         }
@@ -79,67 +70,89 @@
         
         .logo-section {
             text-align: center;
-            padding: 20px 0;
-            background: rgba(27, 94, 32, 0.8);
+            padding: 30px 20px;
+            background: rgba(27, 94, 32, 0.85);
             border-radius: 15px;
-            margin: 15px;
+            margin: 20px;
             width: 90%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 2px solid #4caf50;
         }
         
         .logo-section h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .logo-section p {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #e8f5e9;
+            margin-bottom: 20px;
+        }
+        
+        /* Service text animations */
+        .service-text {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(27, 94, 32, 0.7);
         }
         
         /* Navigation Buttons */
         .nav-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
             width: 90%;
-            margin: 20px 0;
+            max-width: 800px;
+            margin: 30px 0;
         }
         
         .nav-btn {
-            padding: 15px 10px;
+            padding: 16px 25px;
             background-color: #2e7d32;
             color: white;
             border: none;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
+            flex: 1;
+            min-width: 160px;
         }
         
         .nav-btn:hover {
             background-color: #1b5e20;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         
         /* WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            width: 65px;
+            height: 65px;
             background-color: #25d366;
             color: #FFF;
             border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            font-size: 32px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.4);
             z-index: 100;
             display: flex;
             justify-content: center;
@@ -153,167 +166,164 @@
             transform: scale(1.1);
         }
         
-        /* Green Strips Animation */
-        .green-strip {
-            position: absolute;
-            height: 8px;
-            width: 100px;
-            border-radius: 4px;
-            opacity: 0.7;
-            z-index: 2;
-            animation-duration: 15s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
+        /* Service Indicators */
+        .service-indicators {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 12px;
         }
         
-        /* Left to right strips */
-        .strip-ltr-1 {
-            background: linear-gradient(to right, #1b5e20, #4caf50);
-            top: 20%;
-            animation-name: moveRight;
-            animation-delay: 0s;
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
         
-        .strip-ltr-2 {
-            background: linear-gradient(to right, #2e7d32, #66bb6a);
-            top: 50%;
-            animation-name: moveRight;
-            animation-delay: 3s;
+        .indicator.active {
+            background: #2e7d32;
+            transform: scale(1.4);
+            box-shadow: 0 0 10px rgba(46, 125, 50, 0.8);
         }
         
-        .strip-ltr-3 {
-            background: linear-gradient(to right, #388e3c, #81c784);
-            top: 80%;
-            animation-name: moveRight;
-            animation-delay: 6s;
-        }
-        
-        /* Right to left strips */
-        .strip-rtl-1 {
-            background: linear-gradient(to left, #1b5e20, #4caf50);
-            top: 35%;
-            animation-name: moveLeft;
-            animation-delay: 2s;
-        }
-        
-        .strip-rtl-2 {
-            background: linear-gradient(to left, #2e7d32, #66bb6a);
-            top: 65%;
-            animation-name: moveLeft;
-            animation-delay: 5s;
-        }
-        
-        .strip-rtl-3 {
-            background: linear-gradient(to left, #388e3c, #81c784);
-            top: 10%;
-            animation-name: moveLeft;
-            animation-delay: 8s;
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 1rem;
+            color: #c8e6c9;
+            width: 100%;
+            background: rgba(27, 94, 32, 0.8);
+            border-top: 2px solid #4caf50;
         }
         
         /* Animations */
-        @keyframes moveRight {
-            0% {
-                left: -100px;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        
-        @keyframes moveLeft {
-            0% {
-                right: -100px;
-            }
-            100% {
-                right: 100%;
-            }
-        }
-        
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
-        /* Service Indicators */
-        .service-indicators {
-            display: flex;
-            justify-content: center;
-            margin: 15px 0;
-            gap: 10px;
+        @keyframes flyAcross {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
         }
         
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-section p {
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            
+            .nav-btn {
+                padding: 14px 10px;
+                font-size: 0.9rem;
+                min-width: 140px;
+            }
+            
+            .service-text {
+                font-size: 1.4rem;
+                padding: 8px 15px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
         }
         
-        .indicator.active {
-            background: #2e7d32;
-            transform: scale(1.3);
+        @media (max-width: 480px) {
+            .nav-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-btn {
+                width: 100%;
+            }
+            
+            .service-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-section {
+                padding: 20px 15px;
+            }
+            
+            .logo-section h1 {
+                font-size: 1.6rem;
+            }
         }
         
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 15px;
-            font-size: 0.8rem;
-            color: #c8e6c9;
-            width: 100%;
+        /* Desktop specific styles */
+        @media (min-width: 769px) {
+            .nav-buttons {
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+            
+            .nav-btn {
+                flex: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="mobile-container">
-        <!-- Slideshow Background -->
-        <div class="slideshow">
-            <div class="slide active" style="background-image: url('https://placehold.co/600x1000/1b5e20/white?text=Carpet+Cleaning');"></div>
-            <div class="slide" style="background-image: url('https://placehold.co/600x1000/2e7d32/white?text=Commercial+Cleaning');"></div>
-            <div class="slide" style="background-image: url('https://placehold.co/600x1000/388e3c/white?text=Mold+Removal');"></div>
-            <div class="slide-overlay"></div>
-        </div>
-        
-        <!-- Animated Green Strips -->
-        <div class="green-strip strip-ltr-1"></div>
-        <div class="green-strip strip-ltr-2"></div>
-        <div class="green-strip strip-ltr-3"></div>
-        <div class="green-strip strip-rtl-1"></div>
-        <div class="green-strip strip-rtl-2"></div>
-        <div class="green-strip strip-rtl-3"></div>
-        
-        <!-- Content -->
-        <div class="content">
-            <div class="logo-section">
-                <h1>JOHNY'S SERVICE LIMITED</h1>
-                <p>Wellington's Premier Commercial Cleaning Service</p>
-                
-                <div class="service-indicators">
-                    <div class="indicator active" data-slide="0"></div>
-                    <div class="indicator" data-slide="1"></div>
-                    <div class="indicator" data-slide="2"></div>
-                </div>
-            </div>
-            
-            <div class="nav-buttons">
-                <button class="nav-btn" onclick="location.href='about.html'">ABOUT US</button>
-                <button class="nav-btn" onclick="location.href='vision.html'">OUR VISION</button>
-                <button class="nav-btn" onclick="location.href='services.html'">SERVICES</button>
-                <button class="nav-btn" onclick="location.href='enquiry.html'">ENQUIRY</button>
-            </div>
-            
-            <div class="footer">
-                Contact us: 64224647210
-            </div>
-        </div>
-        
-        <!-- WhatsApp Float Button -->
-        <a href="https://wa.me/64224647210?text=Tell%20us%20how%20can%20we%20help%20you" class="whatsapp-float" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+    <!-- Slideshow Background -->
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide-overlay"></div>
     </div>
+    
+    <!-- Content -->
+    <div class="content">
+        <div class="logo-section">
+            <h1>JOHNY'S SERVICE LIMITED</h1>
+            <p>Wellington's Premier Commercial Cleaning Service</p>
+            
+            <div class="service-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="location.href='about.html'">ABOUT US</button>
+            <button class="nav-btn" onclick="location.href='vision.html'">OUR VISION</button>
+            <button class="nav-btn" onclick="location.href='services.html'">SERVICES</button>
+            <button class="nav-btn" onclick="location.href='enquiry.html'">ENQUIRY</button>
+        </div>
+        
+        <div class="footer">
+            Contact us: 64224647210 | Email: info@johnysservices.co.nz
+        </div>
+    </div>
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/64224647210?text=Tell%20us%20how%20can%20we%20help%20you" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     
     <script>
         // Slideshow functionality
@@ -350,15 +360,48 @@
                 });
             });
             
-            // Pause slideshow when user interacts with it
-            const slideshow = document.querySelector('.slideshow');
-            slideshow.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
+            // Create flying service texts
+            const services = [
+                "Carpet Cleaning Services",
+                "Move-In & Move-Out Deep Cleaning Services",
+                "Commercial Deep Cleaning Services",
+                "Airbnb Cleaning Services",
+                "Mold Removal & Cleaning Services"
+            ];
             
-            slideshow.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(nextSlide, 5000);
-            });
+            // Function to create a flying service text
+            function createFlyingService() {
+                const serviceText = document.createElement('div');
+                serviceText.className = 'service-text';
+                
+                // Random service text
+                const randomService = services[Math.floor(Math.random() * services.length)];
+                serviceText.textContent = randomService;
+                
+                // Random vertical position (between 20% and 80% of screen height)
+                const topPosition = Math.floor(Math.random() * 60) + 20;
+                serviceText.style.top = `${topPosition}%`;
+                
+                // Random animation duration (between 15 and 25 seconds)
+                const duration = Math.floor(Math.random() * 10) + 15;
+                serviceText.style.animation = `flyAcross ${duration}s linear forwards`;
+                
+                // Add to document
+                document.body.appendChild(serviceText);
+                
+                // Remove element after animation completes
+                setTimeout(() => {
+                    document.body.removeChild(serviceText);
+                }, duration * 1000);
+            }
+            
+            // Create initial service texts
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createFlyingService, i * 2000);
+            }
+            
+            // Continue creating new service texts periodically
+            setInterval(createFlyingService, 5000);
         });
     </script>
 </body>
