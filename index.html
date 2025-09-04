@@ -20,35 +20,36 @@
             color: white;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0d3b14 0%, #1b5e20 50%, #2e7d32 100%);
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         
-        /* Logo */
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 20px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        /* Slideshow Background */
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 0.2;
         }
         
         /* Content */
@@ -58,165 +59,152 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
-            max-width: 500px;
         }
         
-        /* Title Section */
-        .title-section {
+        /* Logo */
+        .logo-container {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Logo Section with new style */
+        .logo-section {
             text-align: center;
             padding: 20px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin-bottom: 30px;
+            border-radius: 16px;
+            margin-bottom: 20px;
             width: 100%;
+            max-width: 600px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
-        .title-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .logo-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
         }
         
-        .title-section p {
+        .logo-section p {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #e8f5e9;
+            margin-bottom: 5px;
+            font-weight: 300;
         }
         
-        /* Service Slideshow */
-        .services-slideshow {
-            position: relative;
-            width: 100%;
-            height: 280px;
-            margin: 20px 0 40px;
-            perspective: 1000px;
-        }
-        
-        .service-slide {
-            position: absolute;
-            width: 85%;
-            left: 7.5%;
-            top: 0;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 25px 20px;
-            text-align: center;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            transition: transform 0.8s ease, opacity 0.8s ease, z-index 0.8s ease;
-            opacity: 0;
-            z-index: 1;
+        /* Services Container */
+        .services-container {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            min-height: 250px;
+            gap: 15px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 900px;
         }
         
-        .service-slide.active {
+        .service-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            width: 140px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .service-box.visible {
             opacity: 1;
-            transform: translateZ(0);
-            z-index: 10;
-        }
-        
-        .service-slide.prev {
-            opacity: 0.6;
-            transform: translateX(-80%) scale(0.8);
-            z-index: 2;
-            cursor: pointer;
-        }
-        
-        .service-slide.next {
-            opacity: 0.6;
-            transform: translateX(80%) scale(0.8);
-            z-index: 2;
-            cursor: pointer;
+            transform: translateY(0);
         }
         
         .service-icon {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             color: #a5d6a7;
         }
         
         .service-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: white;
-            margin-bottom: 15px;
-        }
-        
-        .service-description {
-            font-size: 0.9rem;
-            color: #e8f5e9;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        /* Slideshow Controls */
-        .slideshow-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .control-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .control-dot.active {
-            background: #fff;
-            transform: scale(1.3);
+            line-height: 1.3;
         }
         
         /* Navigation Buttons */
         .nav-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             width: 100%;
-            margin: 20px 0;
+            max-width: 700px;
+            margin-top: 20px;
         }
         
         .nav-btn {
-            padding: 16px 15px;
+            padding: 14px 20px;
             background: linear-gradient(to right, #2e7d32, #1b5e20);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             text-align: center;
+            flex: 1;
+            min-width: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-btn:hover:before {
+            left: 100%;
         }
         
         .nav-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
         }
         
         /* WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             width: 60px;
             height: 60px;
             background-color: #25d366;
@@ -224,7 +212,7 @@
             border-radius: 50%;
             text-align: center;
             font-size: 28px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 100;
             display: flex;
             justify-content: center;
@@ -246,7 +234,7 @@
             border-radius: 4px;
             opacity: 0.7;
             z-index: 2;
-            animation-duration: 15s;
+            animation-duration: 18s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
         }
@@ -263,14 +251,14 @@
             background: linear-gradient(to right, #2e7d32, #66bb6a);
             top: 35%;
             animation-name: moveRight;
-            animation-delay: 3s;
+            animation-delay: 4s;
         }
         
         .strip-ltr-3 {
             background: linear-gradient(to right, #388e3c, #81c784);
             top: 75%;
             animation-name: moveRight;
-            animation-delay: 6s;
+            animation-delay: 8s;
         }
         
         /* Right to left strips */
@@ -285,14 +273,14 @@
             background: linear-gradient(to left, #2e7d32, #66bb6a);
             top: 55%;
             animation-name: moveLeft;
-            animation-delay: 5s;
+            animation-delay: 6s;
         }
         
         .strip-rtl-3 {
             background: linear-gradient(to left, #388e3c, #81c784);
             top: 85%;
             animation-name: moveLeft;
-            animation-delay: 8s;
+            animation-delay: 10s;
         }
         
         /* Animations */
@@ -316,125 +304,156 @@
         
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
         /* Responsive Design */
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
             body {
-                padding: 30px;
+                padding: 15px;
+                justify-content: flex-start;
             }
             
             .logo {
-                width: 140px;
-                height: 140px;
+                max-width: 150px;
             }
             
-            .logo-text {
-                font-size: 2rem;
+            .logo-section h1 {
+                font-size: 1.8rem;
             }
             
-            .title-section h1 {
-                font-size: 2.2rem;
+            .logo-section p {
+                font-size: 1rem;
             }
             
-            .title-section p {
-                font-size: 1.2rem;
+            .services-container {
+                gap: 12px;
+                margin: 15px 0;
             }
             
-            .services-slideshow {
-                height: 320px;
+            .service-box {
+                width: 110px;
+                padding: 12px 8px;
             }
             
-            .service-slide {
-                width: 70%;
-                left: 15%;
+            .service-icon {
+                font-size: 1.7rem;
+                margin-bottom: 8px;
+            }
+            
+            .service-title {
+                font-size: 0.8rem;
             }
             
             .nav-buttons {
-                grid-template-columns: repeat(4, 1fr);
+                gap: 12px;
+                margin-top: 15px;
             }
             
             .nav-btn {
-                padding: 18px 15px;
-                font-size: 1rem;
+                padding: 12px 15px;
+                font-size: 0.9rem;
+                min-width: 130px;
+                border-radius: 8px;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 55px;
+                height: 55px;
+                font-size: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                max-width: 130px;
+            }
+            
+            .logo-section {
+                padding: 15px;
+                border-radius: 12px;
+            }
+            
+            .logo-section h1 {
+                font-size: 1.6rem;
+            }
+            
+            .services-container {
+                gap: 10px;
+            }
+            
+            .service-box {
+                width: calc(50% - 15px);
+                max-width: 130px;
+                padding: 10px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .color-strip {
+                display: none;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .logo {
+                max-width: 120px;
+            }
+            
+            .logo-section {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .logo-section h1 {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+            
+            .logo-section p {
+                font-size: 0.9rem;
+            }
+            
+            .services-container {
+                margin: 10px 0;
+            }
+            
+            .service-box {
+                padding: 10px 8px;
+            }
+            
+            .service-icon {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+            
+            .service-title {
+                font-size: 0.75rem;
+            }
+            
+            .nav-buttons {
+                margin-top: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Logo without background -->
-    <div class="logo">
-        <div class="logo-text">JSL</div>
-    </div>
-    
-    <!-- Content -->
-    <div class="content">
-        <div class="title-section">
-            <h1>JOHNY'S SERVICE LIMITED</h1>
-            <p>Wellington's Premier Cleaning Services</p>
-        </div>
-        
-        <!-- Service Slideshow -->
-        <div class="services-slideshow">
-            <div class="service-slide active">
-                <div class="service-icon">
-                    <i class="fas fa-rug"></i>
-                </div>
-                <div class="service-title">Carpet Cleaning Services</div>
-                <div class="service-description">Professional deep cleaning and stain removal for all carpet types</div>
-            </div>
-            
-            <div class="service-slide next">
-                <div class="service-icon">
-                    <i class="fas fa-box-open"></i>
-                </div>
-                <div class="service-title">Move-In/Move-Out Cleaning</div>
-                <div class="service-description">Thorough cleaning for homes and apartments between tenants</div>
-            </div>
-            
-            <div class="service-slide">
-                <div class="service-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <div class="service-title">Commercial Cleaning</div>
-                <div class="service-description">Complete cleaning solutions for offices and business premises</div>
-            </div>
-            
-            <div class="service-slide">
-                <div class="service-icon">
-                    <i class="fas fa-bed"></i>
-                </div>
-                <div class="service-title">Airbnb Cleaning</div>
-                <div class="service-description">Quick turnaround cleaning for rental properties</div>
-            </div>
-            
-            <div class="service-slide prev">
-                <div class="service-icon">
-                    <i class="fas fa-biohazard"></i>
-                </div>
-                <div class="service-title">Mold Removal</div>
-                <div class="service-description">Professional mold remediation and prevention services</div>
-            </div>
-        </div>
-        
-        <!-- Slideshow Controls -->
-        <div class="slideshow-controls">
-            <div class="control-dot active" data-index="0"></div>
-            <div class="control-dot" data-index="1"></div>
-            <div class="control-dot" data-index="2"></div>
-            <div class="control-dot" data-index="3"></div>
-            <div class="control-dot" data-index="4"></div>
-        </div>
-        
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <button class="nav-btn" onclick="location.href='about.html'">ABOUT US</button>
-            <button class="nav-btn" onclick="location.href='vision.html'">OUR VISION</button>
-            <button class="nav-btn" onclick="location.href='services.html'">SERVICES</button>
-            <button class="nav-btn" onclick="location.href='enquiry.html'">ENQUIRY</button>
-        </div>
+    <!-- Slideshow Background -->
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/phone-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
     </div>
     
     <!-- Color Strips -->
@@ -445,6 +464,63 @@
     <div class="color-strip strip-rtl-2"></div>
     <div class="color-strip strip-rtl-3"></div>
     
+    <!-- Content -->
+    <div class="content">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="https://placehold.co/200x80/1b5e20/white?text=JOHNY'S+LOGO" alt="JOHNY'S SERVICE LIMITED" class="logo">
+        </div>
+        
+        <div class="logo-section">
+            <h1>JOHNY'S SERVICE LIMITED</h1>
+            <p>Wellington's Premier Commercial Cleaning Service</p>
+        </div>
+        
+        <div class="services-container">
+            <div class="service-box" data-delay="0">
+                <div class="service-icon">
+                    <i class="fas fa-rug"></i>
+                </div>
+                <div class="service-title">Carpet Cleaning Services</div>
+            </div>
+            
+            <div class="service-box" data-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="service-title">Move-In/Move-Out Deep Cleaning</div>
+            </div>
+            
+            <div class="service-box" data-delay="400">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="service-title">Commercial Deep Cleaning</div>
+            </div>
+            
+            <div class="service-box" data-delay="600">
+                <div class="service-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <div class="service-title">Airbnb Cleaning Services</div>
+            </div>
+            
+            <div class="service-box" data-delay="800">
+                <div class="service-icon">
+                    <i class="fas fa-biohazard"></i>
+                </div>
+                <div class="service-title">Mold Removal & Cleaning</div>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="location.href='about.html'">ABOUT US</button>
+            <button class="nav-btn" onclick="location.href='vision.html'">OUR VISION</button>
+            <button class="nav-btn" onclick="location.href='services.html'">SERVICES</button>
+            <button class="nav-btn" onclick="location.href='enquiry.html'">ENQUIRY</button>
+        </div>
+    </div>
+    
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/64224647210?text=Tell%20us%20how%20can%20we%20help%20you" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -452,77 +528,40 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Service slideshow functionality
-            const slides = document.querySelectorAll('.service-slide');
-            const dots = document.querySelectorAll('.control-dot');
+            // Slideshow functionality
+            const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
-            let slideInterval;
             
-            // Function to update slides
-            function updateSlides() {
-                slides.forEach((slide, index) => {
-                    slide.classList.remove('active', 'prev', 'next');
-                    
-                    if (index === currentSlide) {
-                        slide.classList.add('active');
-                    } else if (index === (currentSlide + 1) % slides.length) {
-                        slide.classList.add('next');
-                    } else if (index === (currentSlide - 1 + slides.length) % slides.length) {
-                        slide.classList.add('prev');
-                    }
-                });
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            // Function to go to a specific slide
-            function goToSlide(index) {
-                currentSlide = index;
-                updateSlides();
-            }
-            
-            // Function to go to next slide
             function nextSlide() {
+                slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
-                updateSlides();
+                slides[currentSlide].classList.add('active');
             }
             
             // Set up automatic slideshow
-            function startSlideshow() {
-                slideInterval = setInterval(nextSlide, 4000);
-            }
+            setInterval(nextSlide, 5000);
             
-            // Add click events to dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    clearInterval(slideInterval);
-                    goToSlide(index);
-                    startSlideshow();
-                });
+            // Animate service boxes with delays
+            const serviceBoxes = document.querySelectorAll('.service-box');
+            
+            serviceBoxes.forEach(box => {
+                const delay = parseInt(box.getAttribute('data-delay'));
+                setTimeout(() => {
+                    box.classList.add('visible');
+                }, delay);
             });
             
-            // Add click events to side slides for navigation
-            slides.forEach((slide, index) => {
-                slide.addEventListener('click', (e) => {
-                    if (slide.classList.contains('next')) {
-                        clearInterval(slideInterval);
-                        nextSlide();
-                        startSlideshow();
-                    } else if (slide.classList.contains('prev')) {
-                        clearInterval(slideInterval);
-                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                        updateSlides();
-                        startSlideshow();
-                    }
+            // Create continuous animation for service boxes
+            setInterval(() => {
+                serviceBoxes.forEach((box, index) => {
+                    setTimeout(() => {
+                        box.classList.remove('visible');
+                        setTimeout(() => {
+                            box.classList.add('visible');
+                        }, 500);
+                    }, index * 300);
                 });
-            });
-            
-            // Initialize slideshow
-            updateSlides();
-            startSlideshow();
+            }, 8000);
         });
     </script>
 </body>
