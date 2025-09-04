@@ -115,7 +115,7 @@
             animation-delay: 13s;
         }
         
-        /* Circular Images Container */
+        /* Circular Images Container - LARGER IMAGES */
         .image-showcase {
             display: flex;
             justify-content: center;
@@ -123,21 +123,21 @@
             position: relative;
             z-index: 2;
             margin: 40px 0;
-            height: 250px;
+            height: 350px; /* Increased height for larger images */
             width: 100%;
         }
         
         .image-container {
-            width: 200px;
-            height: 200px;
+            width: 280px; /* Increased from 200px */
+            height: 280px; /* Increased from 200px */
             animation: pulseSize 6s ease-in-out infinite;
             border-radius: 50%;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            border: 6px solid #2c3e50;
+            border: 8px solid #2c3e50; /* Slightly thicker border */
             transition: all 0.5s ease;
             position: relative;
-            margin: 0 -15px; /* Negative margin to make them touch */
+            margin: 0 -20px; /* Adjusted negative margin for larger images */
         }
         
         /* Position images so they touch but don't overlap */
@@ -149,8 +149,8 @@
         
         .image-container:nth-child(2) {
             z-index: 4;
-            width: 230px;
-            height: 230px;
+            width: 320px; /* Increased from 230px */
+            height: 320px; /* Increased from 230px */
             animation-delay: 1s;
             border-color: #2e7d32;
         }
@@ -180,14 +180,14 @@
         
         .image-title {
             position: absolute;
-            bottom: -30px;
+            bottom: -35px; /* Adjusted for larger images */
             left: 0;
             right: 0;
             text-align: center;
             font-weight: bold;
             color: #1b5e20;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
+            font-size: 1.3rem; /* Slightly larger text */
         }
         
         .hero-content {
@@ -200,7 +200,7 @@
             color: #1b5e20;
             text-align: center;
             padding: 0 20px;
-            margin-top: 50px;
+            margin-top: 70px; /* Increased margin for larger images */
         }
         
         .hero-content h1 {
@@ -229,7 +229,7 @@
             flex-wrap: wrap;
             gap: 15px;
             padding: 20px;
-            margin-top: 30px;
+            margin-top: 50px; /* Increased margin for larger images */
         }
         
         .nav-btn {
@@ -429,19 +429,36 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 900px) {
-            .image-showcase {
-                height: 220px;
-            }
-            
+        @media (max-width: 1100px) {
             .image-container {
-                width: 170px;
-                height: 170px;
+                width: 240px;
+                height: 240px;
             }
             
             .image-container:nth-child(2) {
-                width: 190px;
-                height: 190px;
+                width: 280px;
+                height: 280px;
+            }
+            
+            .image-showcase {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .image-showcase {
+                height: 250px;
+            }
+            
+            .image-container {
+                width: 200px;
+                height: 200px;
+                margin: 0 -15px;
+            }
+            
+            .image-container:nth-child(2) {
+                width: 230px;
+                height: 230px;
             }
             
             .hero-content h1 {
@@ -453,24 +470,24 @@
             }
             
             .nav-buttons {
-                margin-top: 20px;
+                margin-top: 30px;
             }
         }
         
         @media (max-width: 768px) {
             .image-showcase {
-                height: 180px;
+                height: 220px;
             }
             
             .image-container {
-                width: 140px;
-                height: 140px;
-                margin: 0 -10px;
+                width: 170px;
+                height: 170px;
+                margin: 0 -12px;
             }
             
             .image-container:nth-child(2) {
-                width: 160px;
-                height: 160px;
+                width: 190px;
+                height: 190px;
             }
             
             .hero-content h1 {
@@ -497,21 +514,21 @@
         
         @media (max-width: 576px) {
             .image-showcase {
-                height: 150px;
+                height: 180px;
                 flex-wrap: wrap;
                 justify-content: center;
                 margin-top: 20px;
             }
             
             .image-container {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
                 margin: 5px;
             }
             
             .image-container:nth-child(2) {
-                width: 140px;
-                height: 140px;
+                width: 160px;
+                height: 160px;
             }
             
             .hero-content h1 {
@@ -551,7 +568,7 @@
     
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Circular Images -->
+        <!-- Circular Images - LARGER SIZE -->
         <div class="image-showcase">
             <div class="image-container">
                 <img src="images/carpetcleaning.jpg" alt="Carpet Cleaning">
