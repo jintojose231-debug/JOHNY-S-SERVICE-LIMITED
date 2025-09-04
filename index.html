@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOHNY'S SERVICE LIMITED - Premium Cleaning Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&family=Cinzel:wght@600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
@@ -89,21 +89,40 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
-        .logo-section h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+        .company-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.4rem;
             margin-bottom: 8px;
-            color: white;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.5px;
+            color: #ffd700;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
         }
         
-        .logo-section p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
+        .company-name:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffd700, transparent);
+        }
+        
+        .tagline {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.2rem;
             color: #e8f5e9;
             margin-bottom: 5px;
-            font-weight: 300;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.5px;
         }
         
         /* Services Container */
@@ -319,12 +338,12 @@
                 max-width: 150px;
             }
             
-            .logo-section h1 {
-                font-size: 1.8rem;
+            .company-name {
+                font-size: 2rem;
             }
             
-            .logo-section p {
-                font-size: 1rem;
+            .tagline {
+                font-size: 1.1rem;
             }
             
             .services-container {
@@ -377,8 +396,12 @@
                 border-radius: 12px;
             }
             
-            .logo-section h1 {
-                font-size: 1.6rem;
+            .company-name {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
             }
             
             .services-container {
@@ -416,13 +439,13 @@
                 margin-bottom: 15px;
             }
             
-            .logo-section h1 {
-                font-size: 1.5rem;
+            .company-name {
+                font-size: 1.7rem;
                 margin-bottom: 5px;
             }
             
-            .logo-section p {
-                font-size: 0.9rem;
+            .tagline {
+                font-size: 0.95rem;
             }
             
             .services-container {
@@ -468,12 +491,12 @@
     <div class="content">
         <!-- Logo -->
         <div class="logo-container">
-            <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED" class="logo">
+            <img src="https://placehold.co/200x80/1b5e20/white?text=JOHNY'S+LOGO" alt="JOHNY'S SERVICE LIMITED" class="logo">
         </div>
         
         <div class="logo-section">
-            <h1>JOHNY'S SERVICE LIMITED</h1>
-            <p>Wellington's Premier Commercial Cleaning Service</p>
+            <h1 class="company-name">JOHNY'S SERVICE LIMITED</h1>
+            <p class="tagline">Wellington's Premier Commercial Cleaning Service</p>
         </div>
         
         <div class="services-container">
@@ -566,4 +589,3 @@
     </script>
 </body>
 </html>
-
