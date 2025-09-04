@@ -514,21 +514,31 @@
         
         @media (max-width: 576px) {
             .image-showcase {
-                height: 180px;
-                flex-wrap: wrap;
+                height: auto;
+                flex-direction: column;
                 justify-content: center;
                 margin-top: 20px;
+                gap: 20px;
             }
             
             .image-container {
-                width: 140px;
-                height: 140px;
-                margin: 5px;
+                width: 80vw;
+                height: 80vw;
+                max-width: 300px;
+                max-height: 300px;
+                margin: 0;
             }
             
             .image-container:nth-child(2) {
-                width: 160px;
-                height: 160px;
+                width: 80vw;
+                height: 80vw;
+                max-width: 300px;
+                max-height: 300px;
+            }
+            
+            /* Remove image labels on mobile */
+            .image-title {
+                display: none;
             }
             
             .hero-content h1 {
@@ -541,13 +551,28 @@
             }
             
             .nav-buttons {
-                flex-direction: column;
-                align-items: center;
-                margin-top: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-top: 20px;
+                width: 100%;
+                max-width: 400px;
             }
             
             .nav-btn {
-                width: 200px;
+                width: 48%;
+                margin-bottom: 10px;
+            }
+            
+            /* Arrange two buttons left and two buttons right */
+            .nav-btn:nth-child(1),
+            .nav-btn:nth-child(2) {
+                align-self: flex-start;
+            }
+            
+            .nav-btn:nth-child(3),
+            .nav-btn:nth-child(4) {
+                align-self: flex-end;
             }
         }
     </style>
