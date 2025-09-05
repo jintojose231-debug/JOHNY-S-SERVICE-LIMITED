@@ -179,74 +179,6 @@
             line-height: 1.3;
         }
         
-        /* New Service Containers */
-        .services-slider-container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 20px auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .services-slider {
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 20px;
-            padding: 10px 0;
-        }
-        
-        .service-card {
-            flex: 0 0 calc(33.333% - 14px);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 25px 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            min-height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .service-card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #ffd700;
-        }
-        
-        .service-card-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: white;
-            line-height: 1.4;
-        }
-        
-        /* Slider controls */
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .slider-dot.active {
-            background: #ffd700;
-            transform: scale(1.2);
-        }
-        
         /* Navigation Buttons */
         .nav-buttons {
             display: flex;
@@ -324,6 +256,12 @@
             text-align: center;
             color: #e8f5e9;
             font-family: 'Source Serif Pro', serif;
+        }
+        
+        .highlight {
+            color: #ffd700;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         /* Enquiry Form Section */
@@ -557,6 +495,17 @@
             font-size: 0.9rem;
         }
         
+        .creator-link {
+            color: #ffd700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .creator-link:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+        
         /* WhatsApp Button */
         .whatsapp-float {
             position: fixed;
@@ -654,10 +603,12 @@
             color: #25d366;
             font-size: 1.5rem;
             margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .dialog-header p {
             color: #555;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .dialog-form {
@@ -712,6 +663,7 @@
             font-size: 1.2rem;
             cursor: pointer;
             color: #999;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .close-dialog:hover {
@@ -837,22 +789,6 @@
                 font-size: 0.8rem;
             }
             
-            /* Service cards for mobile */
-            .service-card {
-                flex: 0 0 calc(50% - 10px);
-                min-height: 180px;
-                padding: 20px 15px;
-            }
-            
-            .service-card-icon {
-                font-size: 2rem;
-                margin-bottom: 12px;
-            }
-            
-            .service-card-title {
-                font-size: 1rem;
-            }
-            
             .nav-buttons {
                 gap: 12px;
                 margin: 15px 0 30px;
@@ -926,12 +862,6 @@
                 padding: 10px;
             }
             
-            .service-card {
-                flex: 0 0 100%;
-                min-height: 160px;
-                padding: 15px;
-            }
-            
             .nav-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -960,7 +890,7 @@
     
     <!-- Color Strips -->
     <div class="color-strip strip-ltr-1"></div>
-    <div class="color极 strip-ltr-2"></div>
+    <div class="color-strip strip-ltr-2"></div>
     <div class="color-strip strip-ltr-3"></div>
     <div class="color-strip strip-rtl-1"></div>
     <div class="color-strip strip-rtl-2"></div>
@@ -978,51 +908,6 @@
                 <h1 class="company-name">JOHNY'S SERVICE LIMITED</h1>
                 <p class="tagline">Clean spaces, happy faces</p>
                 <p class="tagline">Wellington's Premier Commercial Cleaning Service</p>
-            </div>
-            
-            <!-- New Service Cards Slider -->
-            <div class="services-slider-container">
-                <div class="services-slider" id="servicesSlider">
-                    <div class="service-card">
-                        <div class="service-card-icon">
-                            <i class="fas fa-rug"></i>
-                        </div>
-                        <div class="service-card-title">Carpet Cleaning Services</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card-icon">
-                            <i class="fas fa-box-open"></i>
-                        </div>
-                        <div class="service-card-title">Move-In & Move-Out Deep Cleaning Services</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="service-card-title">Commercial Deep Cleaning Services</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card-icon">
-                            <i class="fas fa-bed"></i>
-                        </div>
-                        <div class="service-card-title">Airbnb Cleaning Services</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card-icon">
-                            <i class="fas fa-biohazard"></i>
-                        </div>
-                        <div class="service-card-title">Mold Removal & Cleaning Services</div>
-                    </div>
-                </div>
-                
-                <div class="slider-controls" id="sliderControls">
-                    <div class="slider-dot active" data-index="0"></div>
-                    <div class="slider-dot" data-index="1"></div>
-                </div>
             </div>
             
             <div class="services-container">
@@ -1064,14 +949,13 @@
             
             <div class="nav-buttons">
                 <button class="nav-btn" onclick="location.href='about.html'">ABOUT US</button>
-                <button class="nav-btn" onclick="scrollToVision()">OUR VISION</button>
                 <button class="nav-btn" onclick="location.href='services.html'">SERVICES</button>
                 <button class="nav-btn" onclick="scrollToEnquiry()">ENQUIRY</button>
             </div>
             
             <!-- Company Description Section -->
-            <section id="vision" class="company-description">
-                <p>Johny's Service Limited is your trusted partner for professional residential and commercial cleaning. We deliver spotless results with reliable service, ensuring every space we touch is fresh, clean, and welcoming.</p>
+            <section class="company-description">
+                <p><span class="highlight">Johny's Service Limited</span> is your trusted partner for professional residential and commercial cleaning. We deliver spotless results with reliable service, ensuring every space we touch is fresh, clean, and welcoming.</p>
             </section>
             
             <!-- Enquiry Form Section -->
@@ -1081,7 +965,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type极="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="contact">Contact Number</label>
@@ -1143,8 +1027,8 @@
                     <h3>Quick Links</h3>
                     <p><a href="about.html">About Us</a></p>
                     <p><a href="services.html">Our Services</a></p>
-                    <p><a href="#enquiry">Request a Quote</a></p>
-                    <p><a href="#contact">Contact Us</a></p>
+                    <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
+                    <p><a href="#enquiry">Contact Us</a></p>
                 </div>
                 
                 <div class="footer-section">
@@ -1156,7 +1040,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved.</p>
+                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://www.facebook.com/messages/t/674406351646817/" class="creator-link" target="_blank">Jinto Jose</a></p>
             </div>
         </footer>
     </div>
@@ -1167,7 +1051,7 @@
     </div>
     
     <!-- Scroll to top button -->
-    <div class="scroll-to-top"极 id="scrollToTop">
+    <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
     
@@ -1175,7 +1059,7 @@
     <div class="dialog-overlay" id="dialogOverlay"></div>
     <div class="whatsapp-dialog" id="whatsappDialog">
         <button class="close-dialog" id="closeDialog">&times;</button>
-        <div极 class="dialog-header">
+        <div class="dialog-header">
             <h3>Contact Us</h3>
             <p>Thank you for choosing our services!</p>
         </div>
@@ -1233,84 +1117,6 @@
                 });
             }, 8000);
             
-            // Service cards slider functionality
-            const servicesSlider = document.getElementById('servicesSlider');
-            const sliderControls = document.getElementById('sliderControls');
-            const serviceCards = document.querySelectorAll('.service-card');
-            let currentSlideIndex = 0;
-            let slidesToShow = 3; // Default for desktop
-            
-            // Determine how many slides to show based on screen width
-            function updateSlidesToShow() {
-                if (window.innerWidth <= 768) {
-                    slidesToShow = 2;
-                } else {
-                    slidesToShow = 3;
-                }
-                
-                // Update slider controls
-                updateSliderControls();
-                
-                // Reset to first slide
-                goToSlide(0);
-            }
-            
-            // Update slider controls based on number of slides
-            function updateSliderControls() {
-                const totalSlides = serviceCards.length;
-                const dotsNeeded = Math.ceil(totalSlides / slidesToShow);
-                
-                // Clear existing controls
-                sliderControls.innerHTML = '';
-                
-                // Create new controls
-                for (let i = 0; i < dotsNeeded; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'slider-dot';
-                    dot.setAttribute('data-index', i);
-                    if (i === 0) dot.classList.add('active');
-                    
-                    dot.addEventListener('click', function() {
-                        goToSlide(parseInt(this.getAttribute('data-index')));
-                    });
-                    
-                    sliderControls.appendChild(dot);
-                }
-            }
-            
-            // Go to specific slide
-            function goToSlide(slideIndex) {
-                const totalSlides = serviceCards.length;
-                const maxSlideIndex = Math.ceil(totalSlides / slidesToShow) - 1;
-                
-                if (slideIndex < 0) slideIndex = maxSlideIndex;
-                if (slideIndex > maxSlideIndex) slideIndex = 0;
-                
-                currentSlideIndex = slideIndex;
-                
-                // Calculate transform value
-                const transformValue = -currentSlideIndex * (100 / slidesToShow);
-                servicesSlider.style.transform = `translateX(${transformValue}%)`;
-                
-                // Update active dot
-                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
-                    if (index === currentSlideIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-            
-            // Auto-advance slides
-            setInterval(() => {
-                goToSlide(currentSlideIndex + 1);
-            }, 5000);
-            
-            // Initialize slider
-            updateSlidesToShow();
-            window.addEventListener('resize', updateSlidesToShow);
-            
             // Company description animation
             const companyDescription = document.querySelector('.company-description');
             
@@ -1330,6 +1136,7 @@
             // WhatsApp Dialog functionality
             const whatsappBtn = document.getElementById('whatsappBtn');
             const footerWhatsAppBtn = document.getElementById('footerWhatsAppBtn');
+            const footerQuoteBtn = document.getElementById('footerQuoteBtn');
             const whatsappDialog = document.getElementById('whatsappDialog');
             const dialogOverlay = document.getElementById('dialogOverlay');
             const closeDialog = document.getElementById('closeDialog');
@@ -1345,11 +1152,15 @@
             
             whatsappBtn.addEventListener('click', openWhatsAppDialog);
             footerWhatsAppBtn.addEventListener('click', openWhatsAppDialog);
+            footerQuoteBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsAppDialog();
+            });
             
             // Close dialog
             function closeWhatsAppDialog() {
                 whatsappDialog.style.display = 'none';
-                dialogOverlay.style.display = 'none';
+                dialog极lay.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
             
@@ -1382,11 +1193,6 @@
             // Scroll to enquiry form
             window.scrollToEnquiry = function() {
                 document.getElementById('enquiry').scrollIntoView({ behavior: 'smooth' });
-            };
-            
-            // Scroll to vision section
-            window.scrollToVision = function() {
-                document.getElementById('vision').scrollIntoView({ behavior: 'smooth' });
             };
             
             // Scroll to top button
@@ -1441,7 +1247,7 @@
                     const val = this.value;
                     closeAllLists();
                     
-                    if (!极val) return false;
+                    if (!val) return false;
                     
                     currentFocus = -1;
                     
@@ -1463,12 +1269,12 @@
                         '50 Courtenay Place, Te Aro, Wellington 6011',
                         '65 The Terrace, Wellington Central, Wellington 6011',
                         '78 Willis Street, Wellington Central, Wellington 6011',
-                        '85 Lambton Quay, Wellington Central, Wellington 极1',
+                        '85 Lambton Quay, Wellington Central, Wellington 6011',
                         '100 Customhouse Quay, Wellington Central, Wellington 6011',
                         '120 Featherston Street, Wellington Central, Wellington 6011',
                         '150 Willis Street, Wellington Central, Wellington 6011',
                         '200 Taranaki Street, Te Aro, Wellington 6011',
-                        '250 Cuba Street, Te Aro, Wellington 6011'
+                        '250 Cuba Street, Te极o, Wellington 6011'
                     ];
                     
                     // Filter addresses based on input
@@ -1509,7 +1315,7 @@
                 
                 addressInput.addEventListener('keydown', function(e) {
                     let autocompleteItems = document.getElementById(this.id + '-autocomplete-list');
-                    if (autocompleteItems) autocompleteItems = autocompleteItems.getElementsByTagName('div');
+                    if (autocomplete极s) autocompleteItems = autocompleteItems.getElementsByTagName('div');
                     
                     if (e.keyCode == 40) { // Down arrow
                         currentFocus++;
@@ -1542,7 +1348,7 @@
                 }
                 
                 function closeAllLists(elmnt) {
-                    const autocompleteItems = document.getElementsByClassName('autocomplete-items');
+                    const autocompleteItems = document.getElementsByClassName极('autocomplete-items');
                     for (let i = 0; i < autocompleteItems.length; i++) {
                         if (elmnt != autocompleteItems[i] && elmnt != addressInput) {
                             autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
@@ -1551,7 +1357,7 @@
                 }
                 
                 document.addEventListener('click', function(e) {
-                    closeAllLists(e.target);
+                    close极Lists(e.target);
                 });
             }
             
