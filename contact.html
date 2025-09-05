@@ -1,45 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>NZ Address Autocomplete</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    input {
-      width: 400px;
-      padding: 10px;
-      font-size: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NZ Address Autocomplete</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4d90fe;
+            box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.2);
+        }
+        .address-details {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 4px solid #4d90fe;
+            display: none;
+        }
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff8e1;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-  <h2>Enter your address (NZ only)</h2>
-  <input id="address" type="text" placeholder="Start typing your address...">
+    <div class="container">
+        <h1>New Zealand Address Finder</h1>
+        
+        <div class="form-group">
+            <label for="autocomplete">Start typing your address:</label>
+            <input type="text" id="autocomplete" placeholder="Enter a location in New Zealand">
+        </div>
+        
+        <div class="form-group">
+            <label for="street">Street Address:</label>
+            <input type="text" id="street" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="region">Region:</label>
+            <input type="text" id="region" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="postal-code">Postal Code:</label>
+            <input type="text" id="postal-code" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" readonly>
+        </div>
+        
+        <div class="note">
+            <strong>Note:</strong> You need to replace "YOUR_API_KEY" with your actual Google API key for this to work.
+        </div>
+    </div>
 
-  <script>
-    function initAutocomplete() {
-      const input = document.getElementById("address");
-
-      const options = {
-        componentRestrictions: { country: "nz" }, // Restrict to New Zealand
-        fields: ["formatted_address", "geometry", "name"],
-        types: ["address"]
-      };
-
-      const autocomplete = new google.maps.places.Autocomplete(input, options);
-
-      autocomplete.addListener("place_changed", function () {
-        const place = autocomplete.getPlace();
-        console.log("Selected address:", place.formatted_address);
-        alert("You selected: " + place.formatted_address);
-      });
-    }
-
-    // Initialize autocomplete after page load
-    window.onload = initAutocomplete;
-  </script>
+    <!-- Google Maps API with Places library -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+    
+    <script>
+        // Initialize the autocomplete functionality
+        function initAutocomplete() {
+            // Create the autocomplete object, restricting the search to New Zealand addresses
+            const autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete'),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: { country: 'nz' }
+                }
+            );
+            
+            // When the user selects an address from the dropdown, populate the form fields
+            autocomplete.addListener('place_changed', function() {
+                const place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("No details available for: " + place.name);
+                    return;
+                }
+                
+                // Reset all fields first
+                document.getElementById('street').value = '';
+                document.getElementById('city').value = '';
+                document.getElementById('region').value = '';
+                document.getElementById('postal-code').value = '';
+                document.getElementById('country').value = '';
+                
+                // Get each component of the address
+                for (const component of place.address_components) {
+                    const componentType = component.types[0];
+                    
+                    switch (componentType) {
+                        case 'street_number':
+                            document.getElementById('street').value = component.long_name;
+                            break;
+                        case 'route':
+                            document.getElementById('street').value = 
+                                (document.getElementById('street').value ? 
+                                document.getElementById('street').value + ' ' : '') + component.long_name;
+                            break;
+                        case 'locality':
+                            document.getElementById('city').value = component.long_name;
+                            break;
+                        case 'administrative_area_level_1':
+                            document.getElementById('region').value = component.short_name;
+                            break;
+                        case 'postal_code':
+                            document.getElementById('postal-code').value = component.long_name;
+                            break;
+                        case 'country':
+                            document.getElementById('country').value = component.long_name;
+                            break;
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
