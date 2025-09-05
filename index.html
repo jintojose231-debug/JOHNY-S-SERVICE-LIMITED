@@ -165,6 +165,13 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.2);
         }
         
         .service-box.visible {
@@ -469,6 +476,19 @@
             color: #e8f5e9;
             font-family: 'Poppins', sans-serif;
             text-decoration: none;
+        }
+        
+        .footer-contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-contact-link:hover {
+            color: #ffd700;
+            transform: translateX(5px);
         }
         
         .footer-section a:hover {
@@ -944,7 +964,7 @@
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=160极&q=80');"></div>
     </div>
     
     <!-- Color Strips -->
@@ -970,35 +990,35 @@
             </div>
             
             <div class="services-container">
-                <div class="service-box" data-delay="0">
+                <div class="service-box" data-delay="0" onclick="location.href='services.html'">
                     <div class="service-icon">
                         <i class="fas fa-rug"></i>
                     </div>
                     <div class="service-title">Carpet Cleaning Services</div>
                 </div>
                 
-                <div class="service-box" data-delay="200">
+                <div class="service-box" data-delay="200" onclick="location.href='services.html'">
                     <div class="service-icon">
                         <i class="fas fa-box-open"></i>
                     </div>
                     <div class="service-title">Move-In/Move-Out Deep Cleaning</div>
                 </div>
                 
-                <div class="service-box" data-delay="400">
+                <div class="service-box" data-delay="400" onclick="location.href='services.html'">
                     <div class="service-icon">
                         <i class="fas fa-building"></i>
                     </div>
                     <div class="service-title">Commercial Deep Cleaning</div>
                 </div>
                 
-                <div class="service-box" data-delay="600">
+                <div class="service-box" data-delay="600" onclick="location.href='services.html'">
                     <div class="service-icon">
                         <i class="fas fa-bed"></i>
                     </div>
                     <div class="service-title">Airbnb Cleaning Services</div>
                 </div>
                 
-                <div class="service-box" data-delay="800">
+                <div class="service-box" data-delay="800" onclick="location.href='services.html'">
                     <div class="service-icon">
                         <i class="fas fa-biohazard"></i>
                     </div>
@@ -1077,8 +1097,12 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-phone"></i> 64224647210</p>
-                    <p><i class="fas fa-envelope"></i> info@johnysservices.co.nz</p>
+                    <a href="tel:+64224647210" class="footer-contact-link">
+                        <i class="fas fa-phone"></i> 64224647210
+                    </a>
+                    <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
+                        <i class="fas fa-envelope"></i> info@johnysservices.co.nz
+                    </a>
                     <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
                 </div>
                 
@@ -1087,7 +1111,6 @@
                     <p><a href="about.html">About Us</a></p>
                     <p><a href="services.html">Our Services</a></p>
                     <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
-                    <p><a href="#enquiry">Contact Us</a></p>
                 </div>
                 
                 <div class="footer-section">
@@ -1099,7 +1122,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://www.facebook.com/messages/t/674406351646817/" class="creator-link" target="_blank">Jinto Jose</a></p>
+                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://m.me/jintoj2" class="creator-link" target="_blank">Jinto Jose</a></p>
             </div>
         </footer>
     </div>
@@ -1259,7 +1282,7 @@
             
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('visible');
+                    scrollTo极Btn.classList.add('visible');
                 } else {
                     scrollToTopBtn.classList.remove('visible');
                 }
@@ -1291,7 +1314,7 @@
                 const emailSubject = 'Enquiry for ' + formData.service;
                 const emailBody = `Name: ${formData.name}%0D%0AContact: ${formData.contact}%0D%0AEmail: ${formData.email}%0D%0AService: ${formData.service}%0D%0AAddress: ${formData.address}%0D%0AMessage: ${formData.message}`;
                 
-                window.location.href = `mailto:jintojose231@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+                window.location.href = `mailto:info@johnysservices.co.nz?subject=${emailSubject}&body=${emailBody}`;
                 
                 alert('Thank you for your enquiry! We will contact you soon.');
                 enquiryForm.reset();
@@ -1360,7 +1383,7 @@
                             } else {
                                 item.innerHTML = address;
                             }
-                            item.innerHTML += '<input type="hidden" value="' + address + '">';
+                            item.innerHTML += '<input type="hidden" value="' + address极'">';
                             
                             item.addEventListener('click', function() {
                                 addressInput.value = this.getElementsByTagName('input')[0].value;
@@ -1385,7 +1408,7 @@
                     } else if (e.keyCode == 13) { // Enter
                         e.preventDefault();
                         if (currentFocus > -1 && autocompleteItems) {
-                            autocompleteItems[currentFocus].click();
+                            autocompleteItems[currentFocus极click();
                         }
                     }
                 });
