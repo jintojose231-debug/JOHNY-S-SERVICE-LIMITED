@@ -77,6 +77,13 @@
         .logo-container {
             margin-bottom: 15px;
             text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 250px;
         }
         
         .logo {
@@ -330,6 +337,7 @@
             color: white;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s ease;
+            width: 100%;
         }
         
         .form-group input:focus,
@@ -417,13 +425,16 @@
             background-color: rgba(76, 175, 80, 0.5) !important;
         }
         
-        /* Footer */
+        /* Footer - Updated with glassy white frame */
         .footer {
-            background: rgba(27, 94, 32, 0.9);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             padding: 40px 20px;
             text-align: center;
             margin-top: 50px;
-            border-top: 2px solid #4caf50;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .footer-content {
@@ -832,6 +843,28 @@
                 height: 50px;
                 font-size: 20px;
             }
+            
+            /* Mobile footer adjustments */
+            .footer {
+                padding: 25px 15px;
+                margin-top: 30px;
+                border-radius: 12px;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .footer-section p, 
+            .footer-section a {
+                font-size: 0.9rem;
+            }
+            
+            .footer-bottom {
+                font-size: 0.8rem;
+                margin-top: 20px;
+                padding-top: 15px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -875,6 +908,32 @@
             .color-strip {
                 display: none;
             }
+            
+            /* Mobile form adjustments */
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px;
+            }
+            
+            /* Even smaller footer for very small screens */
+            .footer {
+                padding: 20px 12px;
+            }
+            
+            .footer-section {
+                gap: 10px;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+            
+            .social-links a {
+                width: 35px;
+                height: 35px;
+            }
         }
     </style>
 </head>
@@ -899,7 +958,7 @@
     <!-- Main Content -->
     <div class="main-container">
         <div class="content">
-            <!-- Logo - Updated to use images/logo.png -->
+            <!-- Logo - Updated to use images/logo.png with frame -->
             <div class="logo-container">
                 <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED" class="logo">
             </div>
@@ -1013,7 +1072,7 @@
             </section>
         </div>
         
-        <!-- Footer -->
+        <!-- Footer - Updated with glassy white frame -->
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1157,10 +1216,10 @@
                 openWhatsAppDialog();
             });
             
-            // Close dialog
+            // Close dialog - FIXED: Now properly closes without requiring page reload
             function closeWhatsAppDialog() {
                 whatsappDialog.style.display = 'none';
-                dialog极lay.style.display = 'none';
+                dialogOverlay.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
             
@@ -1274,7 +1333,7 @@
                         '120 Featherston Street, Wellington Central, Wellington 6011',
                         '150 Willis Street, Wellington Central, Wellington 6011',
                         '200 Taranaki Street, Te Aro, Wellington 6011',
-                        '250 Cuba Street, Te极o, Wellington 6011'
+                        '250 Cuba Street, Te Aro, Wellington 6011'
                     ];
                     
                     // Filter addresses based on input
@@ -1315,7 +1374,7 @@
                 
                 addressInput.addEventListener('keydown', function(e) {
                     let autocompleteItems = document.getElementById(this.id + '-autocomplete-list');
-                    if (autocomplete极s) autocompleteItems = autocompleteItems.getElementsByTagName('div');
+                    if (autocompleteItems) autocompleteItems = autocompleteItems.getElementsByTagName('div');
                     
                     if (e.keyCode == 40) { // Down arrow
                         currentFocus++;
@@ -1348,7 +1407,7 @@
                 }
                 
                 function closeAllLists(elmnt) {
-                    const autocompleteItems = document.getElementsByClassName极('autocomplete-items');
+                    const autocompleteItems = document.getElementsByClassName('autocomplete-items');
                     for (let i = 0; i < autocompleteItems.length; i++) {
                         if (elmnt != autocompleteItems[i] && elmnt != addressInput) {
                             autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
@@ -1357,7 +1416,7 @@
                 }
                 
                 document.addEventListener('click', function(e) {
-                    close极Lists(e.target);
+                    closeAllLists(e.target);
                 });
             }
             
