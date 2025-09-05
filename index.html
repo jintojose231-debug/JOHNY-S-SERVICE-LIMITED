@@ -23,111 +23,10 @@
             min-height: 100vh;
             color: white;
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0d3b14 0%, #1b5e20 50%, #2e7d32 100%);
             display: flex;
             flex-direction: column;
             padding: 0;
-        }
-        
-        /* Slideshow Background */
-        .slideshow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .slide.active {
-            opacity: 0.2;
-        }
-        
-        /* Color Strips */
-        .color-strip {
-            position: fixed;
-            height: 8px;
-            width: 100px;
-            border-radius: 4px;
-            opacity: 0.7;
-            z-index: 2;
-            animation-duration: 18s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-        
-        /* Left to right strips */
-        .strip-ltr-1 {
-            background: linear-gradient(to right, #1b5e20, #4caf50);
-            top: 15%;
-            animation-name: moveRight;
-            animation-delay: 0s;
-        }
-        
-        .strip-ltr-2 {
-            background: linear-gradient(to right, #2e7d32, #66bb6a);
-            top: 35%;
-            animation-name: moveRight;
-            animation-delay: 4s;
-        }
-        
-        .strip-ltr-3 {
-            background: linear-gradient(to right, #388e3c, #81c784);
-            top: 75%;
-            animation-name: moveRight;
-            animation-delay: 8s;
-        }
-        
-        /* Right to left strips */
-        .strip-rtl-1 {
-            background: linear-gradient(to left, #1b5e20, #4caf50);
-            top: 25%;
-            animation-name: moveLeft;
-            animation-delay: 2s;
-        }
-        
-        .strip-rtl-2 {
-            background: linear-gradient(to left, #2e7d32, #66bb6a);
-            top: 55%;
-            animation-name: moveLeft;
-            animation-delay: 6s;
-        }
-        
-        .strip-rtl-3 {
-            background: linear-gradient(to left, #388e3c, #81c784);
-            top: 85%;
-            animation-name: moveLeft;
-            animation-delay: 10s;
-        }
-        
-        /* Animations */
-        @keyframes moveRight {
-            0% {
-                left: -100px;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        
-        @keyframes moveLeft {
-            0% {
-                right: -100px;
-            }
-            100% {
-                right: 100%;
-            }
         }
         
         /* Navigation */
@@ -204,8 +103,6 @@
         .main-container {
             width: 100%;
             margin-top: 70px;
-            position: relative;
-            z-index: 3;
         }
         
         /* Hero Section */
@@ -357,7 +254,7 @@
             padding: 30px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10极 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -447,7 +344,7 @@
         }
         
         .feature-card h3 {
-            font-size: 极.3rem;
+            font-size: 1.3rem;
             color: white;
             margin-bottom: 15px;
         }
@@ -532,7 +429,7 @@
         }
         
         .footer-section h3 {
-            font-family: 'Cin极l', serif;
+            font-family: 'Cinzel', serif;
             color: #ffd700;
             font-size: 1.4rem;
             margin-bottom: 10px;
@@ -565,7 +462,7 @@
             transition: all 0.3s ease;
         }
         
-        .social极inks a:hover {
+        .social-links a:hover {
             background: #ffd700;
             transform: translateY(-3px);
         }
@@ -630,7 +527,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 极.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 100;
@@ -743,7 +640,7 @@
             color: #999;
         }
         
-        .close极ialog:hover {
+        .close-dialog:hover {
             color: #333;
         }
         
@@ -811,31 +708,10 @@
                 height: 50px;
                 font-size: 20px;
             }
-            
-            .color-strip {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Slideshow Background -->
-    <div class="slideshow">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-    </div>
-    
-    <!-- Color Strips -->
-    <div class="color-strip strip-ltr-1"></div>
-    <div class="color-strip strip-ltr-2"></div>
-    <div class="color-strip strip-ltr-3"></div>
-    <div class="color-strip strip-rtl-1"></div>
-    <div class="color-strip strip-rtl-2"></div>
-    <div class="color-strip strip-rtl-3"></div>
-
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -857,202 +733,199 @@
         </div>
     </nav>
 
-    <!-- Main container -->
-    <div class="main-container">
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <div class="hero-logo">
-                    <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
-                </div>
-                <h1 class="hero-title">JOHNY'S SERVICE LIMITED</h1>
-                <p class="hero-subtitle">Wellington's Premier Cleaning Service</p>
-                <p class="hero-description">Experience the difference with our professional, reliable, and eco-friendly cleaning solutions. We make your space sparkle.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn-primary" id="heroQuoteBtn">
-                        <i class="fas fa-phone"></i>
-                        Get Free Quote
-                    </a>
-                    <a href="#services" class="btn-secondary">
-                        <i class="fas fa-play"></i>
-                        View Services
-                    </a>
-                </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
             </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="services-section">
-            <div class="section-title">
-                <h2>Our Premium Services</h2>
-                <p>Comprehensive cleaning solutions tailored to your needs</p>
-            </div>
-            
-            <div class="services-grid">
-                <!-- Residential Cleaning -->
-                <div class="service-card" onclick="location.href='services.html'">
-                    <div class="service-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Residential Cleaning</h3>
-                    <p>Complete home cleaning services including deep cleaning, regular maintenance, and move-in/out cleaning.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Kitchen & Bathroom Deep Clean</li>
-                        <li><i class="fas fa-check"></i> Floor Care & Vacuuming</li>
-                        <li><i class="fas fa-check"></i> Dusting & Surface Cleaning</li>
-                    </ul>
-                    <a href="services.html" class="btn-primary">Learn More</a>
-                </div>
-
-                <!-- Commercial Cleaning -->
-                <div class="service-card" onclick="location.href='services.html'">
-                    <div class="service-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>Commercial Cleaning</h3>
-                    <p>Professional office and business cleaning services to maintain a pristine work environment.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Office Space Cleaning</li>
-                        <li><极 class="fas fa-check"></i> Restroom Sanitization</li>
-                        <li><i class="fas fa-check"></i> Window & Glass Cleaning</li>
-                    </ul>
-                    <a href="services.html" class="btn-primary">Learn More</a>
-                </div>
-
-                <!-- Specialized Services -->
-                <div class="service-card" onclick="location.href='services.html'">
-                    <div class="service-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Specialized Services</h3>
-                    <p>Premium specialized cleaning for carpets, upholstery, and post-construction cleanup.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Carpet & Upholstery Cleaning</li>
-                        <li><i class="fas fa-check"></i> Post-Construction Cleanup</li>
-                        <li><i class="fas fa-check"></i> Event Cleanup Services</li>
-                    </ul>
-                    <a href="services.html" class="btn-primary">Learn More</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us Section -->
-        <section id="features" class="features-section">
-            <div class="section-title">
-                <h2>Why Choose Johny's Service?</h2>
-                <p>We're committed to excellence in every detail</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Fully Insured</h3>
-                    <极>Complete insurance coverage for your peace of mind</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Eco-Friendly</h3>
-                    <p>Safe, green cleaning products for your family</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Reliable</h3>
-                    <p>Always on time, every time, guaranteed</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Quality Assured</h3>
-                    <p>100% satisfaction guarantee on all services</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <div class="section-title">
-                <h2>Ready to Get Started?</h2>
-                <p>Contact us today for a free consultation and quote</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Call Us</h3>
-                    <a href="tel:+64224647210">64224647210</a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email Us</h3>
-                    <a href="mailto:info@johnysservices.co.nz">info@johnysservices.co.nz</a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Service Area</h3>
-                    <p>Wellington, New Zealand</p>
-                </div>
-            </div>
-            
-            <div class="contact-button">
-                <a href="#" class="btn-primary" id="contactQuoteBtn">
-                    <i class="fas fa-calendar-alt"></i>
-                    Schedule Your Cleaning Today
+            <h1 class="hero-title">JOHNY'S SERVICE LIMITED</h1>
+            <p class="hero-subtitle">Wellington's Premier Cleaning Service</p>
+            <p class="hero-description">Experience the difference with our professional, reliable, and eco-friendly cleaning solutions. We make your space sparkle.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary" id="heroQuoteBtn">
+                    <i class="fas fa-phone"></i>
+                    Get Free Quote
+                </a>
+                <a href="#services" class="btn-secondary">
+                    <i class="fas fa-play"></i>
+                    View Services
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <a href="tel:+64224647210" class="footer-contact-link">
-                        <i class="fas fa-phone"></i> 64224647210
-                    </a>
-                    <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
-                        <i class="fas fa-envelope"></i> info极johnysservices.co.nz
-                    </a>
-                    <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="section-title">
+            <h2>Our Premium Services</h2>
+            <p>Comprehensive cleaning solutions tailored to your needs</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Residential Cleaning -->
+            <div class="service-card" onclick="location.href='services.html'">
+                <div class="service-icon">
+                    <i class="fas fa-home"></i>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <p><a href="about.html">About Us</a></p>
-                    <p><a href="services.html">Our Services</a></p>
-                    <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
+                <h3>Residential Cleaning</h3>
+                <p>Complete home cleaning services including deep cleaning, regular maintenance, and move-in/out cleaning.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Kitchen & Bathroom Deep Clean</li>
+                    <li><i class="fas fa-check"></i> Floor Care & Vacuuming</li>
+                    <li><i class="fas fa-check"></i> Dusting & Surface Cleaning</li>
+                </ul>
+                <a href="services.html" class="btn-primary">Learn More</a>
+            </div>
+
+            <!-- Commercial Cleaning -->
+            <div class="service-card" onclick="location.href='services.html'">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-links">
-                        <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <h3>Commercial Cleaning</h3>
+                <p>Professional office and business cleaning services to maintain a pristine work environment.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Office Space Cleaning</li>
+                    <li><i class="fas fa-check"></i> Restroom Sanitization</li>
+                    <li><i class="fas fa-check"></i> Window & Glass Cleaning</li>
+                </ul>
+                <a href="services.html" class="btn-primary">Learn More</a>
+            </div>
+
+            <!-- Specialized Services -->
+            <div class="service-card" onclick="location.href='services.html'">
+                <div class="service-icon">
+                    <i class="fas fa-star"></i>
                 </div>
+                <h3>Specialized Services</h3>
+                <p>Premium specialized cleaning for carpets, upholstery, and post-construction cleanup.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Carpet & Upholstery Cleaning</li>
+                    <li><i class="fas fa-check"></i> Post-Construction Cleanup</li>
+                    <li><i class="fas fa-check"></i> Event Cleanup Services</li>
+                </ul>
+                <a href="services.html" class="btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="features" class="features-section">
+        <div class="section-title">
+            <h2>Why Choose Johny's Service?</h2>
+            <p>We're committed to excellence in every detail</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Fully Insured</h3>
+                <p>Complete insurance coverage for your peace of mind</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://m.me/jintoj2" class="creator-link" target="_blank">Jinto Jose</a></p>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Eco-Friendly</h3>
+                <p>Safe, green cleaning products for your family</p>
             </div>
-        </footer>
-    </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Reliable</h3>
+                <p>Always on time, every time, guaranteed</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Quality Assured</h3>
+                <p>100% satisfaction guarantee on all services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-title">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today for a free consultation and quote</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Call Us</h3>
+                <a href="tel:+64224647210">64224647210</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email Us</h3>
+                <a href="mailto:info@johnysservices.co.nz">info@johnysservices.co.nz</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Service Area</h3>
+                <p>Wellington, New Zealand</p>
+            </div>
+        </div>
+        
+        <div class="contact-button">
+            <a href="#" class="btn-primary" id="contactQuoteBtn">
+                <i class="fas fa-calendar-alt"></i>
+                Schedule Your Cleaning Today
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <a href="tel:+64224647210" class="footer-contact-link">
+                    <i class="fas fa-phone"></i> 64224647210
+                </a>
+                <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
+                    <i class="fas fa-envelope"></i> info@johnysservices.co.nz
+                </a>
+                <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="services.html">Our Services</a></p>
+                <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://m.me/jintoj2" class="creator-link" target="_blank">Jinto Jose</a></p>
+        </div>
+    </footer>
     
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float" id="whatsappBtn">
@@ -1065,7 +938,7 @@
     </div>
     
     <!-- WhatsApp Dialog -->
-    <div class="dialog-overlay" id="dialog极verlay"></div>
+    <div class="dialog-overlay" id="dialogOverlay"></div>
     <div class="whatsapp-dialog" id="whatsappDialog">
         <button class="close-dialog" id="closeDialog">&times;</button>
         <div class="dialog-header">
@@ -1091,19 +964,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Slideshow functionality
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-            
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
-            
-            // Set up automatic slideshow
-            setInterval(nextSlide, 5000);
-            
             // Navigation scroll effect
             window.addEventListener('scroll', function() {
                 const nav = document.querySelector('nav');
@@ -1111,14 +971,6 @@
                     nav.style.background = 'rgba(13, 59, 20, 0.95)';
                 } else {
                     nav.style.background = 'rgba(255, 255, 255, 0.1)';
-                }
-                
-                // Scroll to top button
-                const scrollToTopBtn = document.getElementById('scrollToTop');
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
                 }
             });
 
@@ -1205,6 +1057,14 @@
             
             // Scroll to top button
             const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
             
             scrollToTopBtn.addEventListener('click', function() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
