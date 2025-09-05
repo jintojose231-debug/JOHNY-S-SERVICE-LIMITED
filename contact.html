@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NZ Address Autocomplete</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input {
+      width: 400px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter your address (NZ only)</h2>
+  <input id="address" type="text" placeholder="Start typing your address...">
+
+  <script>
+    function initAutocomplete() {
+      const input = document.getElementById("address");
+
+      const options = {
+        componentRestrictions: { country: "nz" }, // Restrict to New Zealand
+        fields: ["formatted_address", "geometry", "name"],
+        types: ["address"]
+      };
+
+      const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+      autocomplete.addListener("place_changed", function () {
+        const place = autocomplete.getPlace();
+        console.log("Selected address:", place.formatted_address);
+        alert("You selected: " + place.formatted_address);
+      });
+    }
+
+    // Initialize autocomplete after page load
+    window.onload = initAutocomplete;
+  </script>
+</body>
+</html>
