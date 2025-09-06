@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -143,6 +136,43 @@
             cursor: pointer;
         }
         
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 59, 20, 0.95);
+            z-index: 49;
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-nav.active {
+            display: flex;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav a:hover {
+            color: #ffd700;
+        }
+        
         /* Main container */
         .main-container {
             width: 100%;
@@ -231,7 +261,7 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 极, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
         .btn-primary:hover {
@@ -338,7 +368,7 @@
         
         .service-features {
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom 25px;
         }
         
         .service-features li {
@@ -468,7 +498,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template极olumns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -527,7 +557,7 @@
         }
         
         .creator-link {
-            color: #极d700;
+            color: #ffd700;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -578,7 +608,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 4px 极5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 100;
@@ -631,7 +661,7 @@
         }
         
         .dialog-header h3 {
-            color: #25极366;
+            color: #25d366;
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
@@ -641,7 +671,7 @@
         }
         
         .dialog-form {
-            display: flex;
+           display: flex;
             flex-direction: column;
             gap: 15px;
         }
@@ -766,7 +796,7 @@
     <!-- Background Slideshow -->
     <div class="slideshow">
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlibrb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
@@ -785,16 +815,24 @@
                 <div class="logo-text">JOHNY'S SERVICE</div>
             </div>
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#features">Why Choose Us</a>
-                <a href="#contact">Contact</a>
+                <a href="#index.html">Home</a>
+                <a href="#about.html">About Us</a>
+                <a href="#services.html">Services We Offer</a>
+                <a href="#contact.html">Reach US</a>
             </div>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
+    
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="#about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="#services.html"><i class="fas fa-concierge-bell"></i> Services We Offer</a>
+        <a href="#contact.html"><i class="fas fa-phone"></i> Reach US</a>
+    </div>
 
     <!-- Main Content -->
     <div class="main-container">
@@ -816,6 +854,40 @@
                         <i class="fas fa-play"></i>
                         View Services
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="services-section">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Learn more about our company and values</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Our Story</h3>
+                    <p>Founded with a passion for cleanliness and attention to detail, Johny's Service Limited has been serving Wellington for over 10 years.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide exceptional cleaning services that exceed customer expectations while maintaining the highest standards of quality and reliability.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Our Team</h3>
+                    <p>Our dedicated team of cleaning professionals is thoroughly trained, background-checked, and committed to delivering outstanding results.</p>
                 </div>
             </div>
         </section>
@@ -853,7 +925,7 @@
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Complete interior cleaning</li>
                         <li><i class="fas fa-check"></i> Appliance cleaning</li>
-                        <极 class="fas fa-check"></i> Window cleaning</li>
+                        <li><i class="fas fa-check"></i> Window cleaning</li>
                     </ul>
                     <a href="services.html" class="btn-primary">Learn More</a>
                 </div>
@@ -948,7 +1020,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Reliable</h3>
+                    <h3>Reliable</极>
                     <p>Always on time, every time, guaranteed</p>
                 </div>
                 
@@ -983,7 +1055,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email Us</h3>
-                    <a href="mail极:info@johnysservices.co.nz">info@johnysservices.co.nz</a>
+                    <a href="mailto:info@johnysservices.co.nz">info@johnysservices.co.nz</a>
                 </div>
                 
                 <div class="contact-card">
@@ -1019,15 +1091,15 @@
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <p><a href="about.html">About Us</a></p>
-                    <p><a href="services.html">Our Services</a></p>
+                    <p><a href="#about">About Us</a></p>
+                    <p><a href="#services">Our Services</a></p>
                     <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" id="footerWhatsAppBtn"><i class="fab极fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -1045,7 +1117,7 @@
     
     <!-- Scroll to top button -->
     <div class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up"></极>
     </div>
     
     <!-- WhatsApp Dialog -->
@@ -1069,7 +1141,7 @@
                     <option value="Specialized Cleaning Services">Specialized Cleaning Services</option>
                 </select>
             </div>
-            <button class="dialog-send-btn"极id="sendWhatsApp">Send via WhatsApp</button>
+            <button class="dialog-send-btn" id="sendWhatsApp">Send via WhatsApp</button>
         </div>
     </div>
     
@@ -1096,6 +1168,14 @@
                 } else {
                     nav.style.background = 'rgba(255, 255, 255, 0.1)';
                 }
+                
+                // Show/hide scroll to top button
+                const scrollToTopBtn = document.getElementById('scrollToTop');
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
             });
 
             // Smooth scrolling for navigation links
@@ -1108,7 +1188,23 @@
                             behavior: 'smooth',
                             block: 'start'
                         });
+                        
+                        // Close mobile menu if open
+                        document.getElementById('mobileNav').classList.remove('active');
                     }
+                });
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.toggle('active');
+            });
+
+            // Scroll to top functionality
+            document.getElementById('scrollToTop').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
 
@@ -1158,4 +1254,17 @@
             
             // Send message via WhatsApp
             sendWhatsApp.addEventListener('click', function() {
-                const selectedS
+                const selectedService = serviceSelect.value;
+                if (selectedService) {
+                    const message = `Hello! I'm interested in your ${selectedService}. Could you please provide more information?`;
+                    const whatsappUrl = `https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                    closeWhatsAppDialog();
+                } else {
+                    alert('Please select a service first.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
