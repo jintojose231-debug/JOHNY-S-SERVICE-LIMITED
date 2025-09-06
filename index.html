@@ -1,4 +1,12 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -110,13 +118,6 @@
             font-family: 'Cinzel', serif;
         }
         
-        .logo-tagline {
-            font-size: 0.7rem;
-            color: #ffd700;
-            font-style: italic;
-            margin-top: 2px;
-        }
-        
         .nav-links {
             display: flex;
             gap: 30px;
@@ -140,36 +141,6 @@
             background: none;
             border: none;
             cursor: pointer;
-        }
-        
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background: rgba(13, 59, 20, 0.95);
-            z-index: 49;
-            flex-direction: column;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .mobile-nav.active {
-            display: flex;
-        }
-        
-        .mobile-nav a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 500;
-        }
-        
-        .mobile-nav a:hover {
-            color: #ffd700;
         }
         
         /* Main container */
@@ -225,14 +196,14 @@
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
         }
         
-        .company-tagline {
+        .hero-subtitle {
             font-size: 1.8rem;
             color: #ffd700;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
         }
         
-        .hero-subtitle {
+        .hero-description {
             font-size: 1.2rem;
             color: #e8f5e9;
             margin-bottom: 40px;
@@ -260,7 +231,7 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 极, 0, 0.2);
         }
         
         .btn-primary:hover {
@@ -392,7 +363,7 @@
             padding: 80px 20px;
         }
         
-      .features-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
@@ -497,7 +468,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template极olumns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -556,7 +527,7 @@
         }
         
         .creator-link {
-            color: #ffd700;
+            color: #极d700;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -607,7 +578,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 极5px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 100;
@@ -660,7 +631,7 @@
         }
         
         .dialog-header h3 {
-            color: #25d366;
+            color: #25极366;
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
@@ -750,7 +721,7 @@
                 font-size: 2.5rem;
             }
             
-            .company-tagline {
+            .hero-subtitle {
                 font-size: 1.5rem;
             }
             
@@ -796,8 +767,8 @@
     <div class="slideshow">
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlibbliblibbliblibbliblib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8fformat=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
     </div>
     
@@ -811,30 +782,19 @@
                 <div class="logo-icon">
                     <i class="fas fa-sparkles"></i>
                 </div>
-                <div>
-                    <div class="logo-text">JOHNY'S SERVICE</div>
-                    <div class="logo-tagline">Clean spaces, happy faces</div>
-                </div>
+                <div class="logo-text">JOHNY'S SERVICE</div>
             </div>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services We Offer</a>
-                <a href="contact.html">Send Your Enquiry</a>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#features">Why Choose Us</a>
+                <a href="#contact">Contact</a>
             </div>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
-
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services We Offer</a>
-        <a href="contact.html">Send Your Enquiry</a>
-    </div>
 
     <!-- Main Content -->
     <div class="main-container">
@@ -845,8 +805,8 @@
                     <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
                 </div>
                 <h1 class="hero-title">JOHNY'S SERVICE LIMITED</h1>
-                <p class="company-tagline">Mess No More - Johnys at Your Door</p>
-                <p class="hero-subtitle">Johny's Service Limited is your trusted partner for professional residential and commercial cleaning. We deliver spotless results with reliable service, ensuring every space we touch is fresh, clean, and welcoming.</p>
+                <p class="hero-subtitle">Wellington's Premier Cleaning Service</p>
+                <p class="hero-description">Experience the difference with our professional, reliable, and eco-friendly cleaning solutions. We make your space sparkle.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn-primary" id="heroQuoteBtn">
                         <i class="fas fa-phone"></i>
@@ -893,7 +853,7 @@
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Complete interior cleaning</li>
                         <li><i class="fas fa-check"></i> Appliance cleaning</li>
-                        <li><i class="fas fa-check"></i> Window cleaning</li>
+                        <极 class="fas fa-check"></i> Window cleaning</li>
                     </ul>
                     <a href="services.html" class="btn-primary">Learn More</a>
                 </div>
@@ -907,7 +867,7 @@
                     <p>Professional office and business cleaning services to maintain a pristine work environment.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Office space cleaning</li>
-                        <li><i class="fas fa-check"></i>sanitizationtionhecsanitizationsanitizationtionhecsanitizationhesanitizationsanitizationonsanitizationtionhecsanitizationhesanitizationhsanitizationsanitizationsanitizationRestroom sanitization</li>
+                        <li><i class="fas fa-check"></i> Restroom sanitization</li>
                         <li><i class="fas fa-check"></i> Window & glass cleaning</li>
                     </ul>
                     <a href="services.html" class="btn-primary">Learn More</a>
@@ -996,7 +956,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h3>Quality Assured</极>
+                    <h3>Quality Assured</h3>
                     <p>100% satisfaction guarantee on all services</p>
                 </div>
             </div>
@@ -1023,7 +983,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email Us</h3>
-                    <a href="mailto:info@johnysservices.co.nz">info@johnysservices.co.nz</a>
+                    <a href="mail极:info@johnysservices.co.nz">info@johnysservices.co.nz</a>
                 </div>
                 
                 <div class="contact-card">
@@ -1035,7 +995,7 @@
                 </div>
             </div>
             
-            <div class极contact-button">
+            <div class="contact-button">
                 <a href="#" class="btn-primary" id="contactQuoteBtn">
                     <i class="fas fa-calendar-alt"></i>
                     Schedule Your Cleaning Today
@@ -1066,7 +1026,7 @@
                 
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
-                    <div class="social极inks">
+                    <div class="social-links">
                         <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -1109,7 +1069,7 @@
                     <option value="Specialized Cleaning Services">Specialized Cleaning Services</option>
                 </select>
             </div>
-            <button class="dialog-send-btn" id="sendWhatsApp">Send via WhatsApp</button>
+            <button class="dialog-send-btn"极id="sendWhatsApp">Send via WhatsApp</button>
         </div>
     </div>
     
@@ -1198,50 +1158,4 @@
             
             // Send message via WhatsApp
             sendWhatsApp.addEventListener('click', function() {
-                const selectedService = serviceSelect.value;
-                if (!selectedService) {
-                    alert('Please select a service');
-                    return;
-                }
-                
-                const message = `Hello! Thank you for your interest in our ${selectedService}. How can we assist you today?`;
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/64224647210?text=${encodedMessage}`;
-                
-                window.open(whatsappURL, '_blank');
-                closeWhatsAppDialog();
-            });
-            
-            // Close dialog with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && whatsappDialog.style.display === 'block') {
-                    closeWhatsAppDialog();
-                }
-            });
-            
-            // Scroll to top button
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
-                }
-            });
-            
-            scrollToTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Mobile menu toggle
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileNav = document.getElementById('mobileNav');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileNav.classList.toggle('active');
-            });
-        });
-    </script>
-</body>
-</html>
+                const selectedS
