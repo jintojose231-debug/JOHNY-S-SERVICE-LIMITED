@@ -92,35 +92,24 @@
             align-items: center;
             gap: 12px;
         }
-        /* Desktop Logo */
-.logo-icon img {
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-
-/* Mobile Side Menu Logo */
-.side-logo {
-    text-align: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd; /* optional */
-}
-
-.side-logo img {
-    width: 80px;   /* adjust size */
-    height: auto;
-    display: block;
-    margin: 0 auto 8px;
-}
-
-.side-logo span {
-    display: block;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #333;
-}
-
-     
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
         
         .logo-text {
             color: white;
@@ -211,16 +200,15 @@
         }
         
         .hero-content {
-            max-width: 950px;
+            max-width: 900px;
             z-index: 3;
         }
         
         .hero-logo {
-            width: 250px;
-            height: 250px;
-            background: #ffffff;
-            backdrop-filter: blur(10px);
-            border-radius: 70%;
+            width: 300px;
+            height: 300px;
+            background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -228,11 +216,14 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             animation: float 6s ease-in-out infinite;
+            overflow: hidden;
+            padding: 20px;
         }
         
         .hero-logo img {
-            max-width: 240px;
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         
         .hero-title {
@@ -349,7 +340,7 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
+            transition: all 极.3s ease;
             cursor: pointer;
         }
         
@@ -422,7 +413,7 @@
         .feature-card {
             text-align: center;
             padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 极.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -521,7 +512,7 @@
             margin-bottom: 40px;
         }
         
-        .footer-section {
+极 .footer-section {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -561,7 +552,7 @@
             transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
+        .social极nks a:hover {
             background: #ffd700;
             transform: translateY(-3px);
         }
@@ -697,7 +688,7 @@
         .dialog-form-group {
             display: flex;
             flex-direction: column;
-            gapixlib=;
+            gap: 8px;
         }
         
         .dialog-form-group label {
@@ -741,6 +732,19 @@
         
         .close-dialog:hover {
             color: #333;
+        }
+        
+        /* About Us Section Styling */
+        .about-description {
+            font-size: 1.4rem;
+            color: #ffd700;
+            text-align: center;
+            margin-top: -40px;
+            margin-bottom: 60px;
+            font-weight: 600;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Animations */
@@ -807,6 +811,11 @@
                 height: 50px;
                 font-size: 20px;
             }
+            
+            .about-description {
+                font-size: 1.2rem;
+                margin-top: -20px;
+            }
         }
     </style>
 </head>
@@ -816,7 +825,7 @@
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlibrb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
     </div>
     
@@ -827,11 +836,11 @@
     <nav>
         <div class="nav-container">
             <div class="logo-container">
-               <div class="logo-icon">
-            <img src="images/logo.png" alt="Company Logo">
-        </div>
-        <span class="logo-text">JOHNY'S SERVICE</span>
-    </div>
+                <div class="logo-icon">
+                    <img src="images/logo.png" alt="JOHNY'S SERVICE">
+                </div>
+                <div class="logo-text">JOHNY'S SERVICE</div>
+            </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
@@ -843,11 +852,7 @@
             </button>
         </div>
     </nav>
-    <!-- Mobile Logo -->
-    <div class="side-logo">
-        <img src="images/logo.png" alt="Company Logo">
-        <span>JOHNY'S SERVICE</span>
-    </div>
+    
     <!-- Mobile Navigation Menu -->
     <div class="mobile-nav" id="mobileNav">
         <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -865,7 +870,7 @@
                     <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
                 </div>
                 <h1 class="hero-title">JOHNY'S SERVICE LIMITED</h1>
-                <p class="hero-subtitle">Wellington's Premier Cleaning Service</p>
+                <p class="hero-subtitle">Mess No More - Johnys at Your Door!</p>
                 <p class="hero-description">Johny's Service Limited is your trusted partner for professional residential and commercial cleaning. We deliver spotless results with reliable service, ensuring every space we touch is fresh, clean, and welcoming.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn-primary" id="heroQuoteBtn">
@@ -884,7 +889,7 @@
         <section id="about" class="services-section">
             <div class="section-title">
                 <h2>About Us</h2>
-                <p>Learn more about our company and values</p>
+                <p class="about-description">Learn more about our company values</p>
             </div>
             
             <div class="services-grid">
@@ -1047,9 +1052,9 @@
                 </div>
                 
                 <div class="feature-card">
-                    <div class="极ature-icon">
+                    <div class="feature-icon">
                         <i class="fas fa-award"></i>
-                    </极>
+                    </div>
                     <h3>Quality Assured</h3>
                     <p>100% satisfaction guarantee on all services</p>
                 </div>
@@ -1064,12 +1069,12 @@
             </div>
             
             <div class="contact-grid">
-                <div class="contact-card">
+                <div class极contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>Call Us</h3>
-                    <a href="tel:+64224647210">64224647210</a>
+                    <a href="tel:+64224647210">+64224647210</a>
                 </div>
                 
                 <div class="contact-card">
@@ -1103,18 +1108,18 @@
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <a href="tel:+64224647210" class="footer-contact-link">
-                        <i class="fas fa-phone"></i> 64224647210
+                        <i class="fas fa-phone"></i> +64224647210
                     </a>
                     <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
-                        <i class="fas fa-envelope"></i> info极johnysservices.co.nz
+                        <i class="fas fa-envelope"></i> info@johnysservices.co.nz
                     </a>
                     <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <p><a href="#about">About Us</a></p>
-                    <p><a href="#services">Our Services</a></p>
+                    <p><a href="about.html">About Us</a></p>
+                    <p><a href="services.html">Our Services</a></p>
                     <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
                 </div>
                 
@@ -1245,20 +1250,30 @@
             // Open dialog
             function openWhatsAppDialog() {
                 whatsappDialog.style.display = 'block';
-                dialog极lay.style.display = 'block';
+                dialogOverlay.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
             
-            whatsappBtn.addEventListener('click', openWhatsAppDialog);
-            footerWhatsAppBtn.addEventListener('click', openWhatsAppDialog);
+            whatsappBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsAppDialog();
+            });
+            
+            footerWhatsAppBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsAppDialog();
+            });
+            
             heroQuoteBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 openWhatsAppDialog();
             });
+            
             contactQuoteBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 openWhatsAppDialog();
             });
+            
             footerQuoteBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 openWhatsAppDialog();
@@ -1286,26 +1301,7 @@
                     alert('Please select a service first.');
                 }
             });
-            
-            // Direct WhatsApp contact without dialog
-            function contactWhatsAppDirectly() {
-                const message = "Hello! I'm interested in your cleaning services. Could you please provide more information?";
-                const whatsappUrl = `https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-            }
-            
-            // Add direct WhatsApp contact for the floating button
-            whatsappBtn.addEventListener('click', contactWhatsAppDirectly);
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
