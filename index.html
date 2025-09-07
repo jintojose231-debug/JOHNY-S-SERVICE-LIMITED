@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -97,11 +96,14 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: #ffd700;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .logo-icon img {
+            max-width: 100%;
+            height: auto;
         }
         
         .logo-text {
@@ -109,6 +111,13 @@
             font-weight: 700;
             font-size: 1.4rem;
             font-family: 'Cinzel', serif;
+        }
+        
+        .logo-tagline {
+            font-size: 0.8rem;
+            color: #ffd700;
+            font-style: italic;
+            margin-left: 10px;
         }
         
         .nav-links {
@@ -229,8 +238,16 @@
         .hero-subtitle {
             font-size: 1.8rem;
             color: #ffd700;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-tagline {
+            font-size: 1.4rem;
+            color: #ffd700;
             margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
         
         .hero-description {
@@ -368,7 +385,7 @@
         
         .service-features {
             text-align: left;
-            margin-bottom 25px;
+            margin-bottom: 25px;
         }
         
         .service-features li {
@@ -747,12 +764,16 @@
                 display: block;
             }
             
+            .logo-tagline {
+                display: none;
+            }
+            
             .hero-title {
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.5rem;
+            .hero-subtitle, .hero-tagline {
+                font-size: 1.2rem;
             }
             
             .hero-buttons {
@@ -810,9 +831,10 @@
         <div class="nav-container">
             <div class="logo-container">
                 <div class="logo-icon">
-                    <i class="fas fa-sparkles"></i>
+                    <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED Logo">
                 </div>
                 <div class="logo-text">JOHNY'S SERVICE</div>
+                <div class="logo-tagline">Clean spaces, happy faces</div>
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -843,8 +865,9 @@
                     <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
                 </div>
                 <h1 class="hero-title">JOHNY'S SERVICE LIMITED</h1>
-                <p class="hero-subtitle">Wellington's Premier Cleaning Service</p>
-                <p class="hero-description">Experience the difference with our professional, reliable, and eco-friendly cleaning solutions. We make your space sparkle.</p>
+                <p class="hero-subtitle">Mess No More - Johnys at Your Door!</p>
+                <p class="hero-tagline">Clean spaces, happy faces</p>
+                <p class="hero-description">Johny's Service Limited is your trusted partner for professional residential and commercial cleaning. We deliver spotless results with reliable service, ensuring every space we touch is fresh, clean, and welcoming.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn-primary" id="heroQuoteBtn">
                         <i class="fas fa-phone"></i>
@@ -1020,7 +1043,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Reliable</极>
+                    <h3>Reliable</h3>
                     <p>Always on time, every time, guaranteed</p>
                 </div>
                 
@@ -1067,7 +1090,7 @@
                 </div>
             </div>
             
-            <div class="contact-button">
+            <div class极"contact-button">
                 <a href="#" class="btn-primary" id="contactQuoteBtn">
                     <i class="fas fa-calendar-alt"></i>
                     Schedule Your Cleaning Today
@@ -1083,14 +1106,14 @@
                     <a href="tel:+64224647210" class="footer-contact-link">
                         <i class="fas fa-phone"></i> 64224647210
                     </a>
-                    <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
+                    <a href="mail极:info@johnysservices.co.nz" class="footer-contact-link">
                         <i class="fas fa-envelope"></i> info@johnysservices.co.nz
                     </a>
                     <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h3>Quick Links</极>
                     <p><a href="#about">About Us</a></p>
                     <p><a href="#services">Our Services</a></p>
                     <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
@@ -1099,7 +1122,7 @@
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#" id="footerWhatsAppBtn"><i class="fab极fa-whatsapp"></i></a>
+                        <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -1117,12 +1140,12 @@
     
     <!-- Scroll to top button -->
     <div class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></极>
+        <i class="fas fa-arrow-up"></i>
     </div>
     
     <!-- WhatsApp Dialog -->
     <div class="dialog-overlay" id="dialogOverlay"></div>
-    <div class="whatsapp-dialog" id="whatsappDialog">
+    <div class="whatsapp-dialog"极id="whatsappDialog">
         <button class="close-dialog" id="closeDialog">&times;</button>
         <div class="dialog-header">
             <h3>Contact Us</h3>
@@ -1170,7 +1193,7 @@
                 }
                 
                 // Show/hide scroll to top button
-                const scrollToTopBtn = document.getElementById('scrollToTop');
+                const scrollTo极TopBtn = document.getElementById('scrollToTop');
                 if (window.scrollY > 300) {
                     scrollToTopBtn.classList.add('visible');
                 } else {
@@ -1257,7 +1280,7 @@
                 const selectedService = serviceSelect.value;
                 if (selectedService) {
                     const message = `Hello! I'm interested in your ${selectedService}. Could you please provide more information?`;
-                    const whatsappUrl = `https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
+                    const whatsappUrl = `极https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                     closeWhatsAppDialog();
                 } else {
@@ -1268,4 +1291,3 @@
     </script>
 </body>
 </html>
-
