@@ -96,14 +96,11 @@
         .logo-icon {
             width: 40px;
             height: 40px;
+            background: #ffd700;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .logo-icon img {
-            max-width: 100%;
-            height: auto;
         }
         
         .logo-text {
@@ -111,13 +108,6 @@
             font-weight: 700;
             font-size: 1.4rem;
             font-family: 'Cinzel', serif;
-        }
-        
-        .logo-tagline {
-            font-size: 0.8rem;
-            color: #ffd700;
-            font-style: italic;
-            margin-left: 10px;
         }
         
         .nav-links {
@@ -238,16 +228,8 @@
         .hero-subtitle {
             font-size: 1.8rem;
             color: #ffd700;
-            margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .hero-tagline {
-            font-size: 1.4rem;
-            color: #ffd700;
             margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
-            font-style: italic;
         }
         
         .hero-description {
@@ -696,7 +678,7 @@
         .dialog-form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gapixlib=;
         }
         
         .dialog-form-group label {
@@ -764,16 +746,12 @@
                 display: block;
             }
             
-            .logo-tagline {
-                display: none;
-            }
-            
             .hero-title {
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle, .hero-tagline {
-                font-size: 1.2rem;
+            .hero-subtitle {
+                font-size: 1.5rem;
             }
             
             .hero-buttons {
@@ -818,7 +796,7 @@
     <div class="slideshow">
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlibrb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
     </div>
@@ -831,10 +809,9 @@
         <div class="nav-container">
             <div class="logo-container">
                 <div class="logo-icon">
-                    <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED Logo">
+                    <i class="fas fa-sparkles"></i>
                 </div>
                 <div class="logo-text">JOHNY'S SERVICE</div>
-                <div class="logo-tagline">Clean spaces, happy faces</div>
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -865,8 +842,7 @@
                     <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
                 </div>
                 <h1 class="hero-title">JOHNY'S SERVICE LIMITED</h1>
-                <p class="hero-subtitle">Mess No More - Johnys at Your Door!</p>
-                <p class="hero-tagline">Clean spaces, happy faces</p>
+                <p class="hero-subtitle">Wellington's Premier Cleaning Service</p>
                 <p class="hero-description">Johny's Service Limited is your trusted partner for professional residential and commercial cleaning. We deliver spotless results with reliable service, ensuring every space we touch is fresh, clean, and welcoming.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn-primary" id="heroQuoteBtn">
@@ -1048,9 +1024,9 @@
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="极ature-icon">
                         <i class="fas fa-award"></i>
-                    </div>
+                    </极>
                     <h3>Quality Assured</h3>
                     <p>100% satisfaction guarantee on all services</p>
                 </div>
@@ -1090,7 +1066,7 @@
                 </div>
             </div>
             
-            <div class极"contact-button">
+            <div class="contact-button">
                 <a href="#" class="btn-primary" id="contactQuoteBtn">
                     <i class="fas fa-calendar-alt"></i>
                     Schedule Your Cleaning Today
@@ -1106,14 +1082,14 @@
                     <a href="tel:+64224647210" class="footer-contact-link">
                         <i class="fas fa-phone"></i> 64224647210
                     </a>
-                    <a href="mail极:info@johnysservices.co.nz" class="footer-contact-link">
-                        <i class="fas fa-envelope"></i> info@johnysservices.co.nz
+                    <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
+                        <i class="fas fa-envelope"></i> info极johnysservices.co.nz
                     </a>
                     <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Quick Links</极>
+                    <h3>Quick Links</h3>
                     <p><a href="#about">About Us</a></p>
                     <p><a href="#services">Our Services</a></p>
                     <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
@@ -1145,7 +1121,7 @@
     
     <!-- WhatsApp Dialog -->
     <div class="dialog-overlay" id="dialogOverlay"></div>
-    <div class="whatsapp-dialog"极id="whatsappDialog">
+    <div class="whatsapp-dialog" id="whatsappDialog">
         <button class="close-dialog" id="closeDialog">&times;</button>
         <div class="dialog-header">
             <h3>Contact Us</h3>
@@ -1193,7 +1169,7 @@
                 }
                 
                 // Show/hide scroll to top button
-                const scrollTo极TopBtn = document.getElementById('scrollToTop');
+                const scrollToTopBtn = document.getElementById('scrollToTop');
                 if (window.scrollY > 300) {
                     scrollToTopBtn.classList.add('visible');
                 } else {
@@ -1231,7 +1207,7 @@
                 });
             });
 
-            // WhatsApp Dialog functionality
+            // WhatsApp Dialog functionality - FIXED
             const whatsappBtn = document.getElementById('whatsappBtn');
             const footerWhatsAppBtn = document.getElementById('footerWhatsAppBtn');
             const heroQuoteBtn = document.getElementById('heroQuoteBtn');
@@ -1246,7 +1222,7 @@
             // Open dialog
             function openWhatsAppDialog() {
                 whatsappDialog.style.display = 'block';
-                dialogOverlay.style.display = 'block';
+                dialog极lay.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
             
@@ -1275,18 +1251,28 @@
             closeDialog.addEventListener('click', closeWhatsAppDialog);
             dialogOverlay.addEventListener('click', closeWhatsAppDialog);
             
-            // Send message via WhatsApp
+            // Send message via WhatsApp - FIXED
             sendWhatsApp.addEventListener('click', function() {
                 const selectedService = serviceSelect.value;
                 if (selectedService) {
                     const message = `Hello! I'm interested in your ${selectedService}. Could you please provide more information?`;
-                    const whatsappUrl = `极https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
+                    const whatsappUrl = `https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                     closeWhatsAppDialog();
                 } else {
                     alert('Please select a service first.');
                 }
             });
+            
+            // Direct WhatsApp contact without dialog
+            function contactWhatsAppDirectly() {
+                const message = "Hello! I'm interested in your cleaning services. Could you please provide more information?";
+                const whatsappUrl = `https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            }
+            
+            // Add direct WhatsApp contact for the floating button
+            whatsappBtn.addEventListener('click', contactWhatsAppDirectly);
         });
     </script>
 </body>
