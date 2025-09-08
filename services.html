@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - JOHNY'S SERVICE LIMITED</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&family=Cinzel:wght@600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&family=Cinzel:wght@600;700&family=Source+Serif+Pro:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
@@ -29,77 +29,164 @@
             flex-direction: column;
         }
         
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #0d3b14 0%, #1b5e20 50%, #2e7d32 100%);
-            padding: 15px 5%;
+        /* Background Slideshow */
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 0.2;
+        }
+        
+        /* Overlay for better text visibility */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 59, 20, 0.8) 0%, rgba(27, 94, 32, 0.8) 50%, rgba(46, 125, 50, 0.8) 100%);
+            z-index: 2;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            height: 70px;
         }
         
-        .header-logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         
-        .logo-frame {
-            background: white;
-            padding: 5px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header-logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-        
-        .header-logo h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd700;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-        
-        nav a:hover {
-            color: #ffd700;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .home-icon {
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-icon {
             width: 40px;
             height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 59, 20, 0.95);
+            z-index: 49;
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-nav.active {
+            display: flex;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav a:hover {
+            color: #ffd700;
+        }
+        
+        /* Main container */
+        .main-container {
+            width: 100%;
+            margin-top: 70px;
+            position: relative;
+            z-index: 3;
         }
         
         /* Services Navigation */
@@ -294,47 +381,38 @@
         
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #0d3b14 0%, #1b5e20 100%);
-            padding: 30px 20px;
+            background: rgba(27, 94, 32, 0.9);
+            padding: 60px 20px 20px;
             text-align: center;
-            margin-top: 40px;
-            color: white;
-            position: relative;
+            border-top: 2px solid #4caf50;
         }
         
         .footer-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: start;
         }
         
         .footer-section {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
         
         .footer-section h3 {
             font-family: 'Cinzel', serif;
             color: #ffd700;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
         
-        .footer-section p,
-        .footer-section a {
+        .footer-section p, .footer-section a {
             color: #e8f5e9;
-            font-family: 'Poppins', sans-serif;
             text-decoration: none;
-            font-size: 0.9rem;
         }
         
         .footer-section a:hover {
@@ -344,37 +422,43 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 8px;
+            gap: 15px;
+            margin-top: 10px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
         
         .social-links a:hover {
-            background: #25D366;
+            background: #ffd700;
             transform: translateY(-3px);
         }
         
-        .whatsapp-icon {
-            font-size: 24px;
-            color: white;
-        }
-        
         .footer-bottom {
-            margin-top: 25px;
-            padding-top: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: #c8e6c9;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+        }
+        
+        .creator-link {
+            color: #ffd700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .creator-link:hover {
+            text-decoration: underline;
+            color: #ffffff;
         }
         
         /* WhatsApp Float Button */
@@ -404,35 +488,29 @@
             transform: scale(1.1);
         }
         
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        
-        /* Scroll to Top Button */
+        /* Scroll to top button */
         .scroll-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
             background: #2e7d32;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 99;
+            z-index: 100;
             opacity: 0;
             visibility: hidden;
         }
         
-        .scroll-to-top.active {
+        .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
@@ -495,7 +573,7 @@
         .dialog-form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
         }
         
         .dialog-form-group label {
@@ -508,7 +586,6 @@
             border-radius: 8px;
             border: 1px solid #ddd;
             background: #f9f9f9;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .dialog-send-btn {
@@ -517,7 +594,6 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -543,21 +619,29 @@
             color: #333;
         }
         
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
         /* Responsive Design */
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
             
-            .header-logo h1 {
-                font-size: 1.3rem;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
+            .services-nav-container {
                 justify-content: center;
             }
             
@@ -570,8 +654,32 @@
                 font-size: 1.4rem;
             }
             
-            .services-nav-container {
-                justify-content: center;
+            .service-nav-item {
+                min-width: 85px;
+                font-size: 0.8rem;
+                padding: 5px;
+            }
+            
+            .service-nav-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .whatsapp-float {
+                bottom: 80px;
+                right: 15px;
+                width: 55px;
+                height: 55px;
+                font-size: 25px;
+            }
+            
+            .scroll-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
         
@@ -592,321 +700,302 @@
                 font-size: 1.3rem;
             }
             
-            nav ul {
-                gap: 10px;
-            }
-            
-            nav a {
-                font-size: 0.9rem;
-                padding: 6px 10px;
-            }
-            
-            .service-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-            
             .services-nav-container {
                 gap: 5px;
-            }
-            
-            .service-nav-item {
-                min-width: 85px;
-                font-size: 0.8rem;
-                padding: 5px;
-            }
-            
-            .service-nav-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-            
-            .scroll-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .whatsapp-float {
-                bottom: 80px;
-                right: 15px;
-                width: 55px;
-                height: 55px;
-                font-size: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <div class="header-logo">
-            <div class="logo-frame">
-                <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
-            </div>
-            <h1>JOHNY'S SERVICE LIMITED</h1>
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="index.html" class="home-icon"><i class="fas fa-home"></i></a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="vision.html">Our Vision</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
-                <li><a href="enquiry.html">Enquiry</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <!-- Services Navigation -->
-    <div class="services-nav">
-        <div class="services-nav-container">
-            <a href="#commercial" class="service-nav-item">
-                <div class="service-nav-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <span>Commercial Cleaning</span>
-            </a>
-            
-            <a href="#move" class="service-nav-item">
-                <div class="service-nav-icon">
-                    <i class="fas fa-box-open"></i>
-                </div>
-                <span>Move In/Out Cleaning</span>
-            </a>
-            
-            <a href="#airbnb" class="service-nav-item">
-                <div class="service-nav-icon">
-                    <i class="fas fa-bed"></i>
-                </div>
-                <span>Airbnb Cleaning</span>
-            </a>
-            
-            <a href="#mold" class="service-nav-item">
-                <div class="service-nav-icon">
-                    <i class="fas fa-biohazard"></i>
-                </div>
-                <span>Mold Removal</span>
-            </a>
-            
-            <a href="#regular" class="service-nav-item">
-                <div class="service-nav-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <span>Regular Maintenance</span>
-            </a>
-        </div>
+    <!-- Background Slideshow -->
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
     </div>
     
-    <!-- Main Content -->
-    <main class="services-container">
-        <div class="page-header">
-            <h2>Our Professional Cleaning Services</h2>
-            <p>Comprehensive cleaning solutions tailored to your specific needs</p>
-        </div>
-        
-        <!-- Commercial Deep Cleaning -->
-        <section id="commercial" class="service-section">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <h2 class="service-title">Commercial Deep Cleaning</h2>
-            </div>
-            
-            <div class="service-content">
-                <p>JSL clean offers expert deep cleaning services customized to suit the specific requirements of your commercial space. Maintaining a clean work environment plays a key role in making a strong impression on clients while also supporting the health and safety of your team.</p>
-                
-                <h3>What Our Service Includes</h3>
-                
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Commercial Cleaning">
-                </div>
-                
-                <h3>General Cleaning Services</h3>
-                <ul class="service-list">
-                    <li>We thoroughly mop and scrub all flooring surfaces.</li>
-                    <li>Light switches, door handles, and fixtures are carefully wiped down.</li>
-                    <li>Ledges, vents, and baseboards are dusted to eliminate buildup.</li>
-                    <li>High-traffic areas like restrooms and kitchens receive detailed attention.</li>
-                </ul>
-                
-                <h3>Furniture and Cabinet Cleaning</h3>
-                <ul class="service-list">
-                    <li>All furniture is moved, cleaned, and returned to its place.</li>
-                    <li>Cabinets, drawers, and shelving units are emptied and wiped clean.</li>
-                </ul>
-                
-                <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
-            </div>
-        </section>
-        
-        <!-- Move-In/Move-Out Cleaning -->
-        <section id="move" class="service-section">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-box-open"></i>
-                </div>
-                <h2 class="service-title">Move-In & Move-Out Cleaning</h2>
-            </div>
-            
-            <div class="service-content">
-                <h3>What's Included in Our Service</h3>
-                
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Move-In/Move-Out Cleaning">
-                </div>
-                
-                <h3>Kitchen Cleaning</h3>
-                <ul class="service-list">
-                    <li>Detailed cleaning of all countertops, cabinets and drawers</li>
-                    <li>Sinks, faucets, and backsplashes are scrubbed and disinfected</li>
-                    <li>Appliances such as the stove, oven, microwave cleaned inside and out</li>
-                </ul>
-                
-                <h3>Bathroom Cleaning</h3>
-                <ul class="service-list">
-                    <li>Toilets, sinks, showers, and bathtubs are deeply sanitized</li>
-                    <li>Mirrors, exhaust fans, and lighting fixtures are cleaned</li>
-                    <li>Tile surfaces and grout lines are scrubbed</li>
-                </ul>
-                
-                <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
-            </div>
-        </section>
-        
-        <!-- Airbnb Cleaning -->
-        <section id="airbnb" class="service-section">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-bed"></i>
-                </div>
-                <h2 class="service-title">Airbnb Cleaning</h2>
-            </div>
-            
-            <div class="service-content">
-                <p>We specialize in professional cleaning solutions tailored specifically for Airbnb hosts. A clean, inviting space is essential for earning great reviews and encouraging repeat guests.</p>
-                
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Airbnb Cleaning">
-                </div>
-                
-                <h3>Why Cleanliness Matters for Airbnb Hosts</h3>
-                
-                <h3>Maintaining Standards</h3>
-                <p>Cleanliness is one of Airbnb's most critical quality factors.</p>
-                
-                <h3>Enhancing Guest Satisfaction</h3>
-                <p>Guests are more likely to leave positive feedback when they arrive to find a tidy space.</p>
-                
-                <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
-            </div>
-        </section>
-        
-        <!-- Mold Removal -->
-        <section id="mold" class="service-section">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-biohazard"></i>
-                </div>
-                <h2 class="service-title">Mold Removal & Cleaning</h2>
-            </div>
-            
-            <div class="service-content">
-                <p>Mold growth poses risks to both your health and property. Our expert mold cleaning services thoroughly eliminate mold, inhibit future growth, and help restore a safe, healthy living or working space.</p>
-                
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mold Removal">
-                </div>
-                
-                <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
-            </div>
-        </section>
-        
-        <!-- Daily/Weekly/Monthly Cleaning -->
-        <section id="regular" class="service-section">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2 class="service-title">Regular Maintenance Cleaning</h2>
-            </div>
-            
-            <div class="service-content">
-                <h3>Daily Cleaning Procedures</h3>
-                <ul class="service-list">
-                    <li>Debris removal and visual checks</li>
-                    <li>Vacuuming busy areas and workspaces</li>
-                    <li>Spot cleaning of stains</li>
-                    <li>Emptying trash bins and replacing liners</li>
-                    <li>Wiping down desks and frequently touched surfaces</li>
-                </ul>
-                
-                <h3>Weekly Cleaning Procedures</h3>
-                <ul class="service-list">
-                    <li>Dusting desks, shelves, and cubicle walls</li>
-                    <li>Emptying bins and cleaning surrounding areas</li>
-                    <li>Disinfecting telephones, keyboards, and desks</li>
-                    <li>Dust and wet mopping hard surfaces</li>
-                </ul>
-                
-                <h3>Monthly Cleaning Procedures</h3>
-                <ul class="service-list">
-                    <li>Sanitizing wall-mounted units</li>
-                    <li>Cleaning walls and vertical surfaces</li>
-                    <li>Spray buffing or burnishing hard floors</li>
-                    <li>Polishing desks, tables, and chairs</li>
-                </ul>
-                
-                <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
-            </div>
-        </section>
-    </main>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> 64224647210</p>
-                <p><i class="fas fa-envelope"></i> info@johnysservices.co.nz</p>
-                <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="index.html">Home</a></p>
-                <p><a href="about.html">About Us</a></p>
-                <p><a href="services.html">Our Services</a></p>
-                <p><a href="enquiry.html">Request a Quote</a></p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <div class="social-links">
-                    <a href="#" id="footerWhatsApp">
-                        <i class="fab fa-whatsapp whatsapp-icon"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Overlay for better text visibility -->
+    <div class="overlay"></div>
 
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="images/logo.png" alt="JOHNY'S SERVICE">
+                </div>
+                <div class="logo-text">JOHNY'S SERVICE</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services We Offer</a>
+                <a href="contact.html">Send your Query</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="services.html"><i class="fas fa-concierge-bell"></i> Services We Offer</a>
+        <a href="contact.html"><i class="fas fa-phone"></i> Reach US</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Services Navigation -->
+        <div class="services-nav">
+            <div class="services-nav-container">
+                <a href="#commercial" class="service-nav-item">
+                    <div class="service-nav-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span>Commercial Cleaning</span>
+                </a>
+                
+                <a href="#move" class="service-nav-item">
+                    <div class="service-nav-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <span>Move In/Out Cleaning</span>
+                </a>
+                
+                <a href="#airbnb" class="service-nav-item">
+                    <div class="service-nav-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <span>Airbnb Cleaning</span>
+                </a>
+                
+                <a href="#mold" class="service-nav-item">
+                    <div class="service-nav-icon">
+                        <i class="fas fa-biohazard"></i>
+                    </div>
+                    <span>Mold Removal</span>
+                </a>
+                
+                <a href="#regular" class="service-nav-item">
+                    <div class="service-nav-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <span>Regular Maintenance</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Services Content -->
+        <main class="services-container">
+            <div class="page-header">
+                <h2>Our Professional Cleaning Services</h2>
+                <p>Comprehensive cleaning solutions tailored to your specific needs</p>
+            </div>
+            
+            <!-- Commercial Deep Cleaning -->
+            <section id="commercial" class="service-section">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h2 class="service-title">Commercial Deep Cleaning</h2>
+                </div>
+                
+                <div class="service-content">
+                    <p>JSL clean offers expert deep cleaning services customized to suit the specific requirements of your commercial space. Maintaining a clean work environment plays a key role in making a strong impression on clients while also supporting the health and safety of your team.</p>
+                    
+                    <h3>What Our Service Includes</h3>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Commercial Cleaning">
+                    </div>
+                    
+                    <h3>General Cleaning Services</h3>
+                    <ul class="service-list">
+                        <li>We thoroughly mop and scrub all flooring surfaces.</li>
+                        <li>Light switches, door handles, and fixtures are carefully wiped down.</li>
+                        <li>Ledges, vents, and baseboards are dusted to eliminate buildup.</li>
+                        <li>High-traffic areas like restrooms and kitchens receive detailed attention.</li>
+                    </ul>
+                    
+                    <h3>Furniture and Cabinet Cleaning</h3>
+                    <ul class="service-list">
+                        <li>All furniture is moved, cleaned, and returned to its place.</li>
+                        <li>Cabinets, drawers, and shelving units are emptied and wiped clean.</li>
+                    </ul>
+                    
+                    <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
+                </div>
+            </section>
+            
+            <!-- Move-In/Move-Out Cleaning -->
+            <section id="move" class="service-section">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h2 class="service-title">Move-In & Move-Out Cleaning</h2>
+                </div>
+                
+                <div class="service-content">
+                    <h3>What's Included in Our Service</h3>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Move-In/Move-Out Cleaning">
+                    </div>
+                    
+                    <h3>Kitchen Cleaning</h3>
+                    <ul class="service-list">
+                        <li>Detailed cleaning of all countertops, cabinets and drawers</li>
+                        <li>Sinks, faucets, and backsplashes are scrubbed and disinfected</li>
+                        <li>Appliances such as the stove, oven, microwave cleaned inside and out</li>
+                    </ul>
+                    
+                    <h3>Bathroom Cleaning</h3>
+                    <ul class="service-list">
+                        <li>Toilets, sinks, showers, and bathtubs are deeply sanitized</li>
+                        <li>Mirrors, exhaust fans, and lighting fixtures are cleaned</li>
+                        <li>Tile surfaces and grout lines are scrubbed</li>
+                    </ul>
+                    
+                    <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
+                </div>
+            </section>
+            
+            <!-- Airbnb Cleaning -->
+            <section id="airbnb" class="service-section">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h2 class="service-title">Airbnb Cleaning</h2>
+                </div>
+                
+                <div class="service-content">
+                    <p>We specialize in professional cleaning solutions tailored specifically for Airbnb hosts. A clean, inviting space is essential for earning great reviews and encouraging repeat guests.</p>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Airbnb Cleaning">
+                    </div>
+                    
+                    <h3>Why Cleanliness Matters for Airbnb Hosts</h3>
+                    
+                    <h3>Maintaining Standards</h3>
+                    <p>Cleanliness is one of Airbnb's most critical quality factors.</p>
+                    
+                    <h3>Enhancing Guest Satisfaction</h3>
+                    <p>Guests are more likely to leave positive feedback when they arrive to find a tidy space.</p>
+                    
+                    <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
+                </div>
+            </section>
+            
+            <!-- Mold Removal -->
+            <section id="mold" class="service-section">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-biohazard"></i>
+                    </div>
+                    <h2 class="service-title">Mold Removal & Cleaning</h2>
+                </div>
+                
+                <div class="service-content">
+                    <p>Mold growth poses risks to both your health and property. Our expert mold cleaning services thoroughly eliminate mold, inhibit future growth, and help restore a safe, healthy living or working space.</p>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mold Removal">
+                    </div>
+                    
+                    <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
+                </div>
+            </section>
+            
+            <!-- Daily/Weekly/Monthly Cleaning -->
+            <section id="regular" class="service-section">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h2 class="service-title">Regular Maintenance Cleaning</h2>
+                </div>
+                
+                <div class="service-content">
+                    <h3>Daily Cleaning Procedures</h3>
+                    <ul class="service-list">
+                        <li>Debris removal and visual checks</li>
+                        <li>Vacuuming busy areas and workspaces</li>
+                        <li>Spot cleaning of stains</li>
+                        <li>Emptying trash bins and replacing liners</li>
+                        <li>Wiping down desks and frequently touched surfaces</li>
+                    </ul>
+                    
+                    <h3>Weekly Cleaning Procedures</h3>
+                    <ul class="service-list">
+                        <li>Dusting desks, shelves, and cubicle walls</li>
+                        <li>Emptying bins and cleaning surrounding areas</li>
+                        <li>Disinfecting telephones, keyboards, and desks</li>
+                        <li>Dust and wet mopping hard surfaces</li>
+                    </ul>
+                    
+                    <h3>Monthly Cleaning Procedures</h3>
+                    <ul class="service-list">
+                        <li>Sanitizing wall-mounted units</li>
+                        <li>Cleaning walls and vertical surfaces</li>
+                        <li>Spray buffing or burnishing hard floors</li>
+                        <li>Polishing desks, tables, and chairs</li>
+                    </ul>
+                    
+                    <button class="estimate-button" onclick="location.href='index.html#enquiry'">Request a free estimate</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <a href="tel:+64224647210" class="footer-contact-link">
+                        <i class="fas fa-phone"></i> +64224647210
+                    </a>
+                    <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
+                        <i class="fas fa-envelope"></i> info@johnysservices.co.nz
+                    </a>
+                    <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="about.html">About Us</a></p>
+                    <p><a href="services.html">Our Services</a></p>
+                    <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://m.me/jintoj2" class="creator-link" target="_blank">Jinto Jose</a></p>
+            </div>
+        </footer>
+    </div>
+    
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float" id="whatsappBtn">
         <i class="fab fa-whatsapp"></i>
     </div>
-
-    <!-- Scroll to Top Button -->
-    <div class="scroll-to-top">
+    
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
     
@@ -924,7 +1013,7 @@
                 <select id="serviceSelect">
                     <option value="">Please select a service</option>
                     <option value="Commercial Deep Cleaning">Commercial Deep Cleaning</option>
-                    <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Cleaning</option>
+                    <option value="Move-In & Move-Out Cleaning">Move-In & Move-Out Cleaning</option>
                     <option value="Airbnb Cleaning">Airbnb Cleaning</option>
                     <option value="Mold Removal & Cleaning">Mold Removal & Cleaning</option>
                     <option value="Regular Maintenance Cleaning">Regular Maintenance Cleaning</option>
@@ -933,104 +1022,38 @@
             <button class="dialog-send-btn" id="sendWhatsApp">Send via WhatsApp</button>
         </div>
     </div>
-
+    
     <script>
-        // Simple animation for service sections when they come into view
         document.addEventListener('DOMContentLoaded', function() {
-            const serviceSections = document.querySelectorAll('.service-section');
+            // Slideshow functionality
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
             
-            serviceSections.forEach(section => {
-                section.style.opacity = 0;
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(section);
-            });
+            // Set up automatic slideshow
+            setInterval(nextSlide, 5000);
             
-            // Scroll to top functionality
-            const scrollBtn = document.querySelector('.scroll-to-top');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollBtn.classList.add('active');
+            // Navigation scroll effect
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(13, 59, 20, 0.95)';
                 } else {
-                    scrollBtn.classList.remove('active');
-                }
-            });
-            
-            scrollBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // WhatsApp Dialog functionality
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            const footerWhatsApp = document.getElementById('footerWhatsApp');
-            const whatsappDialog = document.getElementById('whatsappDialog');
-            const dialogOverlay = document.getElementById('dialogOverlay');
-            const closeDialog = document.getElementById('closeDialog');
-            const sendWhatsApp = document.getElementById('sendWhatsApp');
-            const serviceSelect = document.getElementById('serviceSelect');
-            
-            // Function to open the WhatsApp dialog
-            function openWhatsAppDialog() {
-                whatsappDialog.style.display = 'block';
-                dialogOverlay.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
-            
-            // Open dialog from floating button
-            whatsappBtn.addEventListener('click', openWhatsAppDialog);
-            
-            // Open dialog from footer button
-            footerWhatsApp.addEventListener('click', function(e) {
-                e.preventDefault();
-                openWhatsAppDialog();
-            });
-            
-            // Close dialog
-            function closeWhatsAppDialog() {
-                whatsappDialog.style.display = 'none';
-                dialogOverlay.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-            
-            closeDialog.addEventListener('click', closeWhatsAppDialog);
-            dialogOverlay.addEventListener('click', closeWhatsAppDialog);
-            
-            // Send message via WhatsApp
-            sendWhatsApp.addEventListener('click', function() {
-                const selectedService = serviceSelect.value;
-                if (!selectedService) {
-                    alert('Please select a service');
-                    return;
+                    nav.style.background = 'rgba(255, 255, 255, 0.1)';
                 }
                 
-                const message = `Hello! Thank you for your interest in our ${selectedService}. How can we assist you today?`;
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/64224647210?text=${encodedMessage}`;
-                
-                window.open(whatsappURL, '_blank');
-                closeWhatsAppDialog();
-            });
-            
-            // Close dialog with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && whatsappDialog.style.display === 'block') {
-                    closeWhatsAppDialog();
+                // Show/hide scroll to top button
+                const scrollToTopBtn = document.getElementById('scrollToTop');
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
                 }
             });
-        });
-    </script>
-</body>
-</html>
+
+            // Smooth scrolling for navigation
