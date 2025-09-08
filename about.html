@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - JOHNY'S SERVICE LIMITED</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&family=Cinzel:wght@600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&family=Cinzel:wght@600;700&family=Source+Serif+Pro:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
         * {
@@ -16,18 +16,16 @@
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px;
         }
         
         body {
-            line-height: 1.6;
-            color: #333;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 25%, #a5d6a7 50%, #81c784 75%, #66bb6a 100%);
             min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
+            padding: 0;
         }
         
         .container {
@@ -37,77 +35,164 @@
             padding: 0 20px;
         }
         
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #0d3b14 0%, #1b5e20 50%, #2e7d32 100%);
-            padding: 15px 5%;
+        /* Background Slideshow */
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 0.2;
+        }
+        
+        /* Overlay for better text visibility */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            z-index: 2;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            height: 70px;
         }
         
-        .header-logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         
-        .logo-frame {
-            background: white;
-            padding: 5px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header-logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-        
-        .header-logo h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd700;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-        
-        nav a:hover {
-            color: #ffd700;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .home-icon {
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-icon {
             width: 40px;
             height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 59, 20, 0.95);
+            z-index: 49;
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-nav.active {
+            display: flex;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav a:hover {
+            color: #ffd700;
+        }
+        
+        /* Main container */
+        .main-container {
+            width: 100%;
+            margin-top: 70px;
+            position: relative;
+            z-index: 3;
         }
         
         /* Main Content */
@@ -121,7 +206,7 @@
             text-align: center;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #1b5e20;
+            color: white;
             position: relative;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -133,19 +218,20 @@
             display: block;
             width: 120px;
             height: 5px;
-            background: linear-gradient(to right, #1b5e20, #4caf50);
+            background: linear-gradient(to right, #ffd700, #4caf50);
             margin: 20px auto;
             border-radius: 3px;
             animation: scaleIn 0.8s ease-out;
         }
         
         .about-content {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             animation: slideIn 1s ease-out;
         }
         
@@ -153,30 +239,31 @@
             font-size: 1.2rem;
             line-height: 1.8;
             margin-bottom: 30px;
-            color: #2c3e50;
+            color: #e8f5e9;
             text-align: justify;
         }
         
         .highlight {
-            color: #1b5e20;
+            color: #ffd700;
             font-weight: 600;
         }
         
         /* Area We Serve Section */
         .area-serve {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             animation: slideIn 1s ease-out;
         }
         
         .area-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 2rem;
-            color: #1b5e20;
+            color: #ffd700;
             text-align: center;
             margin-bottom: 30px;
         }
@@ -192,12 +279,12 @@
             width: 100%;
             max-width: 800px;
             height: 500px;
-            background: #e8f5e9;
+            background: rgba(232, 245, 233, 0.1);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 1px solid #c8e6c9;
+            border: 1px solid rgba(200, 230, 201, 0.3);
         }
         
         .map-iframe {
@@ -224,10 +311,10 @@
             text-align: center;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            color: #1b5e20;
+            color: #ffd700;
             font-size: 1.5rem;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-            background: rgba(255, 255, 255, 0.7);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.5);
             padding: 10px;
             backdrop-filter: blur(5px);
         }
@@ -245,70 +332,62 @@
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
-            color: #2e7d32;
-            background: rgba(233, 245, 233, 0.5);
+            color: #e8f5e9;
+            background: rgba(255, 255, 255, 0.1);
             padding: 8px 15px;
             border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .dot {
             width: 12px;
             height: 12px;
-            background: #2e7d32;
+            background: #ffd700;
             border-radius: 50%;
         }
         
         .map-note {
             text-align: center;
             font-style: italic;
-            color: #666;
+            color: #c8e6c9;
             margin-top: 15px;
             font-size: 0.9rem;
         }
         
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #0d3b14 0%, #1b5e20 100%);
-            padding: 30px 20px;
+            background: rgba(27, 94, 32, 0.9);
+            padding: 60px 20px 20px;
             text-align: center;
-            margin-top: 40px;
-            color: white;
-            position: relative;
+            border-top: 2px solid #4caf50;
         }
         
         .footer-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: start;
         }
         
         .footer-section {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
         
         .footer-section h3 {
             font-family: 'Cinzel', serif;
             color: #ffd700;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
         
-        .footer-section p,
-        .footer-section a {
+        .footer-section p, .footer-section a {
             color: #e8f5e9;
-            font-family: 'Poppins', sans-serif;
             text-decoration: none;
-            font-size: 0.9rem;
         }
         
         .footer-section a:hover {
@@ -318,37 +397,43 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 8px;
+            gap: 15px;
+            margin-top: 10px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
         
         .social-links a:hover {
-            background: #25D366;
+            background: #ffd700;
             transform: translateY(-3px);
         }
         
-        .whatsapp-icon {
-            font-size: 24px;
-            color: white;
-        }
-        
         .footer-bottom {
-            margin-top: 25px;
-            padding-top: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: #c8e6c9;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+        }
+        
+        .creator-link {
+            color: #ffd700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .creator-link:hover {
+            text-decoration: underline;
+            color: #ffffff;
         }
         
         /* WhatsApp Float Button */
@@ -378,35 +463,29 @@
             transform: scale(1.1);
         }
         
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        
-        /* Scroll to Top Button */
+        /* Scroll to top button */
         .scroll-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
             background: #2e7d32;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 99;
+            z-index: 100;
             opacity: 0;
             visibility: hidden;
         }
         
-        .scroll-to-top.active {
+        .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
@@ -469,7 +548,7 @@
         .dialog-form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
         }
         
         .dialog-form-group label {
@@ -482,7 +561,6 @@
             border-radius: 8px;
             border: 1px solid #ddd;
             background: #f9f9f9;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .dialog-send-btn {
@@ -491,7 +569,6 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -554,40 +631,40 @@
             }
         }
         
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-            }
-            
-            .header-logo h1 {
-                font-size: 1.3rem;
-            }
-            
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .page-title {
-                font-size: 2.5rem;
-            }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .about-content, .area-serve {
-                padding: 30px;
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             .page-title {
                 font-size: 2.2rem;
             }
             
+            .about-content, .area-serve {
+                padding: 30px;
+            }
+            
             .about-text {
                 font-size: 1.1rem;
+            }
+            
+            .area-title {
+                font-size: 1.8rem;
+            }
+            
+            .map-container {
+                height: 400px;
             }
             
             .whatsapp-float {
@@ -599,42 +676,15 @@
             }
             
             .scroll-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .map-container {
-                height: 400px;
-            }
-            
-            .area-title {
-                font-size: 1.8rem;
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
         
         @media (max-width: 576px) {
-            .header-logo {
-                flex-direction: column;
-                text-align: center;
-                gap: 8px;
-            }
-            
-            .header-logo h1 {
-                font-size: 1.2rem;
-            }
-            
-            nav ul {
-                gap: 10px;
-            }
-            
-            nav a {
-                padding: 6px 10px;
-                font-size: 0.9rem;
-            }
-            
             .page-title {
                 font-size: 1.8rem;
             }
@@ -667,116 +717,140 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-logo">
-            <div class="logo-frame">
-                <img src="images/logo.png" alt="JOHNY'S SERVICE LIMITED">
+    <!-- Background Slideshow -->
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('images/stock1.jpg');"></div>
+        <div class="slide" style="background-image: url('images/stock2.jpg');"></div>
+        <div class="slide" style="background-image: url('images/stock3.jpg');"></div>
+        <div class="slide" style="background-image: url('images/stock4.jpg');"></div>
+        <div class="slide" style="background-image: url('images/stock5.jpg');"></div>
+    </div>
+    
+    <!-- Overlay for better text visibility -->
+    <div class="overlay"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="images/logo.png" alt="JOHNY'S SERVICE">
+                </div>
+                <div class="logo-text">JOHNY'S SERVICE</div>
             </div>
-            <h1>JOHNY'S SERVICE LIMITED</h1>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services We Offer</a>
+                <a href="contact.html">Send your Query</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        
-        <nav>
-            <ul>
-                <li><a href="index.html" class="home-icon"><i class="fas fa-home"></i></a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="vision.html">Our Vision</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="enquiry.html">Enquiry</a></li>
-            </ul>
-        </nav>
-    </header>
+    </nav>
+    
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="services.html"><i class="fas fa-concierge-bell"></i> Services We Offer</a>
+        <a href="contact.html"><i class="fas fa-phone"></i> Reach US</a>
+    </div>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <h1 class="page-title">About Us</h1>
-            
-            <div class="about-content">
-                <p class="about-text">At <span class="highlight">JOHNY'S SERVICE LIMITED</span>, we take pride in delivering professional and reliable cleaning services across Wellington, New Zealand. With a strong commitment to quality and attention to detail, we help our clients maintain clean, healthy, and welcoming spaces.</p>
+    <div class="main-container">
+        <main class="main-content">
+            <div class="container">
+                <h1 class="page-title">About Us</h1>
                 
-                <p class="about-text">Our team specializes in carpet cleaning, move-in and move-out deep cleaning, commercial deep cleaning, Airbnb cleaning, and mold removal. Whether you are preparing a property for new tenants, ensuring your Airbnb guests have a spotless stay, revitalizing your carpets, or tackling mold issues, we provide tailored solutions that make a real difference.</p>
+                <div class="about-content">
+                    <p class="about-text">At <span class="highlight">JOHNY'S SERVICE LIMITED</span>, we take pride in delivering professional and reliable cleaning services across Wellington, New Zealand. With a strong commitment to quality and attention to detail, we help our clients maintain clean, healthy, and welcoming spaces.</p>
+                    
+                    <p class="about-text">Our team specializes in carpet cleaning, move-in and move-out deep cleaning, commercial deep cleaning, Airbnb cleaning, and mold removal. Whether you are preparing a property for new tenants, ensuring your Airbnb guests have a spotless stay, revitalizing your carpets, or tackling mold issues, we provide tailored solutions that make a real difference.</p>
+                    
+                    <p class="about-text">We use safe and effective methods to achieve outstanding results, giving you peace of mind and a fresh environment to enjoy. At <span class="highlight">JOHNY'S SERVICE LIMITED</span>, our mission is simple — to make cleaning stress-free while creating spaces that shine.</p>
+                </div>
                 
-                <p class="about-text">We use safe and effective methods to achieve outstanding results, giving you peace of mind and a fresh environment to enjoy. At <span class="highlight">JOHNY'S SERVICE LIMITED</span>, our mission is simple — to make cleaning stress-free while creating spaces that shine.</p>
-            </div>
-            
-            <!-- Area We Serve Section -->
-            <div class="area-serve">
-                <h2 class="area-title">Area We Serve</h2>
-                <div class="wellington-map">
-                    <div class="map-container">
-                        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191749.2380162962!2d174.65051999114525!3d-41.28893865313509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b1fc49e3e96d%3A0x500ef6143a2e6c0!2sWellington%2C%20New%20Zealand!5e0!3m2!1sen!2sus!4v1725565433550!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div class="map-overlay"></div>
-                        <div class="map-label">Wellington, New Zealand</div>
+                <!-- Area We Serve Section -->
+                <div class="area-serve">
+                    <h2 class="area-title">Area We Serve</h2>
+                    <div class="wellington-map">
+                        <div class="map-container">
+                            <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191749.2380162962!2d174.65051999114525!3d-41.28893865313509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b1fc49e3e96d%3A0x500ef6143a2e6c0!2sWellington%2C%20New%20Zealand!5e0!3m2!1sen!2sus!4v1725565433550!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="map-overlay"></div>
+                            <div class="map-label">Wellington, New Zealand</div>
+                        </div>
+                        <div class="location-dots">
+                            <div class="location-dot">
+                                <span class="dot"></span>
+                                <span>Wellington CBD</span>
+                            </div>
+                            <div class="location-dot">
+                                <span class="dot"></span>
+                                <span>Lower Hutt</span>
+                            </div>
+                            <div class="location-dot">
+                                <span class="dot"></span>
+                                <span>Upper Hutt</span>
+                            </div>
+                            <div class="location-dot">
+                                <span class="dot"></span>
+                                <span>Porirua</span>
+                            </div>
+                            <div class="location-dot">
+                                <span class="dot"></span>
+                                <span>Kapiti Coast</span>
+                            </div>
+                        </div>
+                        <p class="map-note">We proudly serve all greater Wellington region areas</p>
                     </div>
-                    <div class="location-dots">
-                        <div class="location-dot">
-                            <span class="dot"></span>
-                            <span>Wellington CBD</span>
-                        </div>
-                        <div class="location-dot">
-                            <span class="dot"></span>
-                            <span>Lower Hutt</span>
-                        </div>
-                        <div class="location-dot">
-                            <span class="dot"></span>
-                            <span>Upper Hutt</span>
-                        </div>
-                        <div class="location-dot">
-                            <span class="dot"></span>
-                            <span>Porirua</span>
-                        </div>
-                        <div class="location-dot">
-                            <span class="dot"></span>
-                            <span>Kapiti Coast</span>
-                        </div>
-                    </div>
-                    <p class="map-note">We proudly serve all greater Wellington region areas</p>
                 </div>
             </div>
-        </div>
-    </main>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> 64224647210</p>
-                <p><i class="fas fa-envelope"></i> info@johnysservices.co.nz</p>
-                <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="index.html">Home</a></p>
-                <p><a href="about.html">About Us</a></p>
-                <p><a href="services.html">Our Services</a></p>
-                <p><a href="enquiry.html">Request a Quote</a></p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <div class="social-links">
-                    <a href="#" id="footerWhatsApp">
-                        <i class="fab fa-whatsapp whatsapp-icon"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved.</p>
-        </div>
-    </footer>
+        </main>
 
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <a href="tel:+64224647210" class="footer-contact-link">
+                        <i class="fas fa-phone"></i> +64224647210
+                    </a>
+                    <a href="mailto:info@johnysservices.co.nz" class="footer-contact-link">
+                        <i class="fas fa-envelope"></i> info@johnysservices.co.nz
+                    </a>
+                    <p><i class="fas fa-map-marker-alt"></i> Wellington, New Zealand</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="about.html">About Us</a></p>
+                    <p><a href="services.html">Our Services</a></p>
+                    <p><a href="#" id="footerQuoteBtn">Request a Quote</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</极>
+                    <div class="social-links">
+                        <a href="#" id="footerWhatsAppBtn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 JOHNY'S SERVICE LIMITED. All rights reserved. Created by <a href="https://m.me/jintoj2" class="creator-link" target="_blank">Jinto Jose</a></p>
+            </div>
+        </footer>
+    </div>
+    
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float" id="whatsappBtn">
         <i class="fab fa-whatsapp"></i>
     </div>
-
-    <!-- Scroll to Top Button -->
-    <div class="scroll-to-top">
+    
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
     
@@ -785,7 +859,7 @@
     <div class="whatsapp-dialog" id="whatsappDialog">
         <button class="close-dialog" id="closeDialog">&times;</button>
         <div class="dialog-header">
-            <h3>Contact Us</h3>
+            <h极>Contact Us</h3>
             <p>Thank you for choosing our services!</p>
         </div>
         <div class="dialog-form">
@@ -793,77 +867,109 @@
                 <label for="serviceSelect">Which service are you interested in?</label>
                 <select id="serviceSelect">
                     <option value="">Please select a service</option>
-                    <option value="Commercial Deep Cleaning">Commercial Deep Cleaning</option>
-                    <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Cleaning</option>
-                    <option value="Airbnb Cleaning">Airbnb Cleaning</option>
-                    <option value="Mold Removal & Cleaning">Mold Removal & Cleaning</option>
-                    <option value="Regular Maintenance Cleaning">Regular Maintenance Cleaning</option>
+                    <option value="Carpet Cleaning Services">Carpet Cleaning Services</option>
+                    <option value="Move-In & Move-Out Deep Cleaning Services">Move-In & Move-Out Deep Cleaning Services</option>
+                    <option value="Commercial Deep Cleaning Services">Commercial Deep Cleaning Services</option>
+                    <option value="Airbnb Cleaning Services">Airbnb Cleaning Services</option>
+                    <option value="Mold Removal & Cleaning Services">Mold Removal & Cleaning Services</option>
+                    <option value="Specialized Cleaning Services">Specialized Cleaning Services</option>
                 </select>
             </div>
-            <button class="dialog-send-btn" id="sendWhatsApp">Send via WhatsApp</button>
+            <button class="dialog-send-btn"极="sendWhatsApp">Send via WhatsApp</button>
         </div>
     </div>
-
+    
     <script>
-        // Simple animation for content when it comes into view
         document.addEventListener('DOMContentLoaded', function() {
-            const contentSections = document.querySelectorAll('.about-content, .area-serve');
+            // Slideshow functionality
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
             
-            contentSections.forEach(section => {
-                section.style.opacity = 0;
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(section);
-            });
+            // Set up automatic slideshow
+            setInterval(nextSlide, 5000);
             
-            // Scroll to top functionality
-            const scrollBtn = document.querySelector('.scroll-to-top');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollBtn.classList.add('active');
+            // Navigation scroll effect
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(13, 59, 20, 0.95)';
                 } else {
-                    scrollBtn.classList.remove('active');
+                    nav.style.background = 'rgba(255, 255, 255, 0.1)';
+                }
+                
+                // Show/hide scroll to top button
+                const scrollToTopBtn = document.getElementById('scrollToTop');
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
                 }
             });
-            
-            scrollBtn.addEventListener('click', () => {
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        document.getElementById('mobileNav').classList.remove('active');
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.toggle('active');
+            });
+
+            // Scroll to top functionality
+            document.getElementById('scrollToTop').addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             });
-            
+
             // WhatsApp Dialog functionality
             const whatsappBtn = document.getElementById('whatsappBtn');
-            const footerWhatsApp = document.getElementById('footerWhatsApp');
+            const footerWhatsAppBtn = document.getElementById('footerWhatsAppBtn');
+            const footerQuoteBtn = document.getElementById('footerQuoteBtn');
             const whatsappDialog = document.getElementById('whatsappDialog');
             const dialogOverlay = document.getElementById('dialogOverlay');
             const closeDialog = document.getElementById('closeDialog');
             const sendWhatsApp = document.getElementById('sendWhatsApp');
             const serviceSelect = document.getElementById('serviceSelect');
             
-            // Function to open the WhatsApp dialog
+            // Open dialog
             function openWhatsAppDialog() {
                 whatsappDialog.style.display = 'block';
                 dialogOverlay.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
             
-            // Open dialog from floating button
-            whatsappBtn.addEventListener('click', openWhatsAppDialog);
+            whatsappBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsAppDialog();
+            });
             
-            // Open dialog from footer button
-            footerWhatsApp.addEventListener('click', function(e) {
+            footerWhatsAppBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsAppDialog();
+            });
+            
+            footerQuoteBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 openWhatsAppDialog();
             });
@@ -881,24 +987,33 @@
             // Send message via WhatsApp
             sendWhatsApp.addEventListener('click', function() {
                 const selectedService = serviceSelect.value;
-                if (!selectedService) {
-                    alert('Please select a service');
-                    return;
-                }
-                
-                const message = `Hello! Thank you for your interest in our ${selectedService}. How can we assist you today?`;
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/64224647210?text=${encodedMessage}`;
-                
-                window.open(whatsappURL, '_blank');
-                closeWhatsAppDialog();
-            });
-            
-            // Close dialog with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && whatsappDialog.style.display === 'block') {
+                if (selectedService) {
+                    const message = `Hello! I'm interested in your ${selectedService}. Could you please provide more information?`;
+                    const whatsappUrl = `https://wa.me/64224647210?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
                     closeWhatsAppDialog();
+                } else {
+                    alert('Please select a service first.');
                 }
+            });
+
+            // Simple animation for content when it comes into view
+            const contentSections = document.querySelectorAll('.about-content, .area-serve');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            contentSections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
             });
         });
     </script>
