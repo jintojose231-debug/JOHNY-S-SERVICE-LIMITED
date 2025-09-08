@@ -204,9 +204,10 @@
             z-index: 3;
         }
         
+        /* FIX 1: Made the hero logo container bigger */
         .hero-logo {
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -217,7 +218,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             animation: float 6s ease-in-out infinite;
             overflow: hidden;
-            padding: 20px;
+            padding: 25px;
         }
         
         .hero-logo img {
@@ -264,7 +265,7 @@
             color: #1b5e20;
             font-weight: 600;
             padding: 15px 30px;
-            border-radius: 50px;
+            border-radius; 50px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -340,7 +341,7 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            transition: all 极.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
         
@@ -413,7 +414,7 @@
         .feature-card {
             text-align: center;
             padding: 30px 20px;
-            background: rgba(255, 255, 255, 极.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -495,10 +496,10 @@
             text-align: center;
         }
         
-        /* Footer */
+        /* Footer - FIX 4: Improved footer layout */
         .footer {
             background: rgba(27, 94, 32, 0.9);
-            padding: 50px 20px 20px;
+            padding: 60px 20px 20px;
             text-align: center;
             border-top: 2px solid #4caf50;
         }
@@ -510,9 +511,10 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
+            align-items: start;
         }
         
-极 .footer-section {
+        .footer-section {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -552,7 +554,7 @@
             transition: all 0.3s ease;
         }
         
-        .social极nks a:hover {
+        .social-links a:hover {
             background: #ffd700;
             transform: translateY(-3px);
         }
@@ -630,7 +632,7 @@
             visibility: visible;
         }
         
-        .scroll-to-top:hover {
+ .scroll-to-top:hover {
             background: #1b5e20;
             transform: translateY(-5px);
         }
@@ -680,7 +682,7 @@
         }
         
         .dialog-form {
-           display: flex;
+            display: flex;
             flex-direction: column;
             gap: 15px;
         }
@@ -734,7 +736,14 @@
             color: #333;
         }
         
-        /* About Us Section Styling */
+        /* FIX 2: Updated About Us Section Styling */
+        .about-heading {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+        
         .about-description {
             font-size: 1.4rem;
             color: #ffd700;
@@ -775,6 +784,12 @@
             
             .hero-subtitle {
                 font-size: 1.5rem;
+            }
+            
+            /* FIX 1: Responsive adjustment for larger logo */
+            .hero-logo {
+                width: 280px;
+                height: 280px;
             }
             
             .hero-buttons {
@@ -888,8 +903,8 @@
         <!-- About Us Section -->
         <section id="about" class="services-section">
             <div class="section-title">
-                <h2>About Us</h2>
-                <p class="about-description">Learn more about our company values</p>
+                <!-- FIX 2: Removed "ABOUT US" and made "Learn more about our company values" the heading -->
+                <h2 class="about-heading">Learn more about our company values</h2>
             </div>
             
             <div class="services-grid">
@@ -1008,7 +1023,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <h3>Specialized Services</h3>
-                    <p>Premium specialized cleaning for unique needs and situations.</p>
+                    <p>Premium specialized cleaning for unique needs and situations.</极>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Post-construction cleanup</li>
                         <li><i class="fas fa-check"></i> Event cleanup services</li>
@@ -1047,7 +1062,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Reliable</h3>
+                    <h3>Reliable</极>
                     <p>Always on time, every time, guaranteed</p>
                 </div>
                 
@@ -1069,7 +1084,8 @@
             </div>
             
             <div class="contact-grid">
-                <div class极contact-card">
+                <!-- FIX 3: Added missing "Call us" container with same style as others -->
+                <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
@@ -1217,7 +1233,7 @@
                         });
                         
                         // Close mobile menu if open
-                        document.getElementById('mobileNav').classList.remove('active');
+                        document.getElementById('mobile').classList.remove('active');
                     }
                 });
             });
