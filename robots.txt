@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://johnysservice.co.nz/sitemap.xml
